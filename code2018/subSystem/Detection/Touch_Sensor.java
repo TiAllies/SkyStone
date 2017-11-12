@@ -1,4 +1,4 @@
-package code2018.subSystem.Detection;
+package Code18.code2018.subSystem.Detection;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;

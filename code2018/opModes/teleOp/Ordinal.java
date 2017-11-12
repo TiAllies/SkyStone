@@ -1,14 +1,14 @@
-package code2018.opModes.teleOp;
+package Code18.code2018.opModes.teleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-import code2018.subSystem.Claw;
-import code2018.subSystem.Detection.JewelPusher;
-import code2018.subSystem.Lift;
-import code2018.subSystem.Rotator;
-import TitaniumAllies2017.subsystems.MecanumDrive;
+import Code18.code2018.subSystem.Claw;
+import Code18.code2018.subSystem.JewelPusher;
+import Code18.code2018.subSystem.Lift;
+import Code18.code2018.subSystem.Rotator;
+import Code18.code2018.subSystem.MecanumDrive;
 
 /**
  * Created by Titanium Allies on 11/3/2017.

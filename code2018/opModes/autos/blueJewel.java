@@ -1,11 +1,11 @@
-package code2018.opModes.autos;
+package Code18.code2018.opModes.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import code2018.subSystem.Detection.Color_Sensor;
-import code2018.subSystem.Detection.JewelPusher;
-import code2018.subSystem.MecanumDrive;
+import Code18.code2018.subSystem.Detection.Color_Sensor;
+import Code18.code2018.subSystem.JewelPusher;
+import Code18.code2018.subSystem.MecanumDrive;
 
 /**
  * Created by Titanium Allies on 11/11/2017.
