@@ -16,6 +16,8 @@ public class MecanumDrive {
     private DcMotor _motorRightBack;
     private DcMotor _motorLeftFront;
     private DcMotor _motorLeftBack;
+    private boolean brakeModeEnabled = true;
+
 
 
     public MecanumDrive(LinearOpMode linearOpMode) {
@@ -72,6 +74,22 @@ public class MecanumDrive {
         _motorRightFront.setPower(power);
         _motorRightBack.setPower(power);
     }
+
+    public void turnLeft (double power){
+        _motorLeftBack.setPower(-power);
+        _motorLeftFront.setPower(-power);
+        _motorRightFront.setPower(power);
+        _motorRightBack.setPower(power);
+    }
+
+    public void setZeroPowerBehavior() {
+        _motorLeftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        _motorRightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        _motorRightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        _motorLeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
+
+
     //autonomous
 
 
@@ -103,13 +121,15 @@ public class MecanumDrive {
         return (int) (distance*TICKS_PER_INCH);
     }
 
+    //Error somewhere in the following code
     public void move(int direction, int distance, double power){
         setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
         distance = convertEncoder(distance);
-        _motorLeftBack.setTargetPosition((int)(_motorLeftBack.getCurrentPosition() - (direction*distance)));
-        _motorLeftFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() - (direction*distance)));
-        _motorRightBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() - (direction*distance)));
-        _motorRightFront.setTargetPosition((int)(_motorRightFront.getCurrentPosition() - (direction*distance)));
+        _motorLeftBack.setTargetPosition((_motorLeftBack.getCurrentPosition() - (direction*distance)));
+        _motorLeftFront.setTargetPosition((_motorLeftFront.getCurrentPosition() - (direction*distance)));
+        // Right Back is the messed up wheel, fixed with switching encoder cords
+        _motorRightBack.setTargetPosition((_motorRightBack.getCurrentPosition() - (direction*distance)));
+        _motorRightFront.setTargetPosition((_motorRightFront.getCurrentPosition() - (direction*distance)));
 
         sleep(100);
         _motorLeftBack.setPower(power);
@@ -194,7 +214,7 @@ public class MecanumDrive {
                  _motorLeftFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() + (distance)));
                  _motorRightBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() + (distance)));
                  _motorRightFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() - (distance)));
-                 _motorLeftBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() + (distance)));
+                 _motorLeftBack.setTargetPosition((int)(_motorLeftBack.getCurrentPosition() + (distance)));
 
                  sleep(100);
                  _motorLeftBack.setPower(power);
@@ -208,7 +228,7 @@ public class MecanumDrive {
                  _motorLeftFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() - (distance)));
                  _motorRightBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() + (distance)));
                  _motorRightFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() + (distance)));
-                 _motorLeftBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() + (distance)));
+                 _motorLeftBack.setTargetPosition((int)(_motorLeftBack.getCurrentPosition() + (distance)));
 
                  sleep(100);
                  _motorLeftBack.setPower(power);
@@ -224,7 +244,7 @@ public class MecanumDrive {
                  _motorLeftFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() - (distance)));
                  _motorRightBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() + (distance)));
                  _motorRightFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() - (distance)));
-                 _motorLeftBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() - (distance)));
+                 _motorLeftBack.setTargetPosition((int)(_motorLeftBack.getCurrentPosition() - (distance)));
 
                  sleep(100);
                  _motorLeftBack.setPower(power);
@@ -239,7 +259,7 @@ public class MecanumDrive {
                  _motorLeftFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() - (distance)));
                  _motorRightBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() - (distance)));
                  _motorRightFront.setTargetPosition((int)(_motorLeftFront.getCurrentPosition() - (distance)));
-                 _motorLeftBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() + (distance)));
+                 _motorLeftBack.setTargetPosition((int)(_motorLeftBack.getCurrentPosition() + (distance)));
 
                  sleep(100);
                  _motorLeftBack.setPower(power);

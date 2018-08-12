@@ -12,8 +12,8 @@ import Code18.code2018.subSystem.Suspension;
 /**
  * Created by Titanium Allies on 11/11/2017.
  */
-@Autonomous(name ="BlueJewel",group="Autonomous" )
-public class blueJewel extends LinearOpMode{
+@Autonomous(name ="RedJewel",group="Autonomous" )
+public class redAJewel extends LinearOpMode{
     private Color_Sensor color_sensor;
     private MecanumDrive mecanumDrive;
     private JewelPusher jewelPusher;
@@ -33,12 +33,12 @@ public class blueJewel extends LinearOpMode{
         initialize();
         waitForStart();
         suspension.upsieDoodleDoo();
-        jewelPusher.LowerOne();
+        jewelPusher.LowerTwo();
         sleep(3000);
         while (opModeIsActive()) {
-            if (colorSensor.red() < colorSensor.blue() && colorSensor.red() < colorSensor.green()) {
+            if (colorSensor.red() > colorSensor.blue() && colorSensor.red() > colorSensor.green()) {
                 mecanumDrive.turn(mecanumDrive.RIGHT, 3, .1);
-                jewelPusher.initPositionOne();
+                jewelPusher.initPositionTwo();
                 mecanumDrive.turn(mecanumDrive.LEFT, 2, .1);
                 telemetry.addData("color", "red");
                 telemetry.update();
@@ -46,9 +46,9 @@ public class blueJewel extends LinearOpMode{
             }
 
             sleep(10);
-            if (colorSensor.blue() < colorSensor.red() && colorSensor.blue() < colorSensor.green()) {
+            if (colorSensor.blue() > colorSensor.red() && colorSensor.blue() > colorSensor.green()) {
                 mecanumDrive.turn(mecanumDrive.LEFT, 3, .1);
-                jewelPusher.initPositionOne();
+                jewelPusher.initPositionTwo();
                 mecanumDrive.turn(mecanumDrive.RIGHT, 2, .1);
                 telemetry.addData("color", "blue");
                 telemetry.update();

@@ -14,6 +14,7 @@ public class Color_Sensor {
 
     public Color_Sensor(HardwareMap hardwareMap) {
         _colorSensor = hardwareMap.colorSensor.get("colorSensor");
+
     }
 
     public int red(){
@@ -23,5 +24,6 @@ public class Color_Sensor {
         return _colorSensor.blue();
     }
     public int green() {return _colorSensor.green();}
+
 
 }

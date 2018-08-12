@@ -1,6 +1,7 @@
 package Code18.code2018.opModes.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import Code18.code2018.subSystem.Claw;
@@ -12,21 +13,21 @@ import Code18.code2018.subSystem.MecanumDrive;
  * Created by Titanium Allies on 11/10/2017.
  */
 @Autonomous(name ="BlueAllianceFar",group="Autonomous" )
-
+@Disabled
 public class blueAllianceII extends LinearOpMode{
     private Color_Sensor colorSensor;
     private MecanumDrive mecanumDrive;
     private Optical_Distance_Sensor oDS;
-    private Claw claw;
+  //  private Claw claw;
     private JewelPusher jewelPusher;
 
     public void initialize() {
         colorSensor = new Color_Sensor(hardwareMap);
         mecanumDrive = new MecanumDrive(hardwareMap, this);
         //  oDS = new Optical_Distance_Sensor(hardwareMap);
-        claw = new Claw(hardwareMap);
+      //  claw = new Claw(hardwareMap);
         jewelPusher = new JewelPusher(hardwareMap);
-        jewelPusher.Raise();
+        jewelPusher.RaiseTwo();
     }
 
 
@@ -35,23 +36,13 @@ public class blueAllianceII extends LinearOpMode{
 
         initialize();
         waitForStart();
-        jewelPusher.Lower();
+        jewelPusher.LowerTwo();
         while (opModeIsActive()) {
             if (colorSensor.red() > colorSensor.blue() && colorSensor.red() > colorSensor.green()) {
-                telemetry.addData("color", "blue");
+                telemetry.addData("color", "red");
                 telemetry.update();
-                mecanumDrive.turn(mecanumDrive.RIGHT, 3, 1);
-                mecanumDrive.turn(mecanumDrive.LEFT, 3, 1);
-                jewelPusher.Raise();
-                mecanumDrive.move(mecanumDrive.FORWARDS, 24, 1);
-                mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
-                mecanumDrive.turn(mecanumDrive.LEFT, 22, 1);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 18, 1);
-                claw.open();
-                sleep(2500);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 5, 1);
-                mecanumDrive.stop();
-                sleep(20000);
+                mecanumDrive.forwards(1);
+                sleep(10000);
 
             }
             sleep(10);
@@ -60,14 +51,14 @@ public class blueAllianceII extends LinearOpMode{
                 telemetry.update();
                 mecanumDrive.turn(mecanumDrive.LEFT, 3, 1);
                 mecanumDrive.turn(mecanumDrive.RIGHT, 3, 1);
-                jewelPusher.Raise();
+                jewelPusher.RaiseTwo();
                 mecanumDrive.move(mecanumDrive.FORWARDS, 24, 1);
                 mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
                 mecanumDrive.turn(mecanumDrive.LEFT, 22, 1);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 18, 1);
-                claw.open();
+               // claw.open();
                 sleep(2500);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 5, 1);
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 5, 1);
                 mecanumDrive.stop();
                 sleep(20000);
 

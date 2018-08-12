@@ -8,7 +8,54 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 public class Claw{
-    private final static double OPENI = 1;
+    private final static double OPEN = 1;
+    private final static double CLOSE = 0;
+    private final static double STOP = .5;
+    private final static double STOP1 = .55;
+
+    private Servo _contTop;
+    private Servo _contBot;
+
+    public Claw (HardwareMap hardwareMap){
+        _contTop = hardwareMap.servo.get("contTop");
+        _contBot = hardwareMap.servo.get("contBot");
+
+        _contBot.setPosition(STOP);
+        /*for(int i = 0; i < 500; i++){
+            _contTop.setPosition(OPEN);
+            //_contBot.setPosition(CLOSE);
+        }*/
+        _contTop.setPosition(STOP);
+        }
+
+    public void openOne() {
+        _contBot.setPosition(OPEN);
+    }
+
+    public void closeOne(){
+        _contBot.setPosition(CLOSE);
+    }
+
+    public void stopOne(){
+        _contBot.setPosition(STOP);
+    }
+
+
+    public void openTwo(){
+        _contTop.setPosition(OPEN);
+    }
+
+    public void closeTwo(){
+        _contTop.setPosition(CLOSE);
+    }
+
+    public void stopTwo(){
+        _contTop.setPosition(STOP);
+    }
+
+
+}
+    /*private final static double OPENI = 1;
     private final static double OPENII = 0;
    // private final static double CLOSE = .4;
     private final static double INITING = .23;
@@ -104,4 +151,4 @@ public class Claw{
         _rightBotClawPosition += 0;
         _leftBotClawPosition += 0;
     }
-}
+}*/

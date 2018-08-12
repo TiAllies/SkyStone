@@ -8,27 +8,30 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 public class JewelPusher {
-    public final static double DOWN = 0.04 ;
-    public final static double UP = 1 ;
-    public final static double NEUTRAL = 1 ;
+    private final static double DOWN = .666 ;
+    private final static double UP = 0 ;
+    private final static double Init2 = 1 ;
+    private final static double Init1 = 0;
 
-    private Servo _jewelPush;
-    private double _jewelPushPosition;
+    private Servo _jewelPushOne;
+    private Servo _jewelPushTwo;
 
     public JewelPusher(HardwareMap hardwareMap){
-        _jewelPush = hardwareMap.servo.get("jewelPusher");
-        _jewelPush.setPosition(UP);
-       /* _jewelPushPosition = NEUTRAL;
-        _jewelPush.setPosition(_jewelPushPosition);*/
+        _jewelPushOne = hardwareMap.servo.get("jewelPusher1");
+        _jewelPushTwo = hardwareMap.servo.get("jewelPusher2");
+        _jewelPushOne.setPosition(Init1);
+        _jewelPushTwo.setPosition(Init2);
+
     }
-    public void Lower(){
-        _jewelPush.setPosition(DOWN);
+    public void LowerOne(){
+        _jewelPushOne.setPosition(DOWN);
     }
-    public void Raise () {
-        _jewelPush.setPosition(UP);
+    public void LowerTwo() {_jewelPushTwo.setPosition(UP);}
+    public void RaiseOne() {
+        _jewelPushOne.setPosition(UP);
     }
-    public void neutral (){
-        _jewelPush.setPosition(NEUTRAL);
-    }
+    public void RaiseTwo() {_jewelPushTwo.setPosition(DOWN);}
+    public void initPositionOne() {_jewelPushOne.setPosition(Init1);}
+    public void initPositionTwo () {_jewelPushTwo.setPosition(Init2);}
 
 }

@@ -1,6 +1,7 @@
 package Code18.code2018.opModes.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import Code18.code2018.subSystem.Claw;
@@ -12,7 +13,7 @@ import Code18.code2018.subSystem.MecanumDrive;
  * Created by Titanium Allies on 11/10/2017.
  */
 @Autonomous(name ="RedAllianceFar",group="Autonomous" )
-
+@Disabled
 public class redAllianceII extends LinearOpMode{
     private Color_Sensor colorSensor;
     private MecanumDrive mecanumDrive;
@@ -34,19 +35,20 @@ public class redAllianceII extends LinearOpMode{
 
         initialize();
         waitForStart();
-        jewelPusher.Lower();
+        claw.closeOne();
+        jewelPusher.LowerOne();
         while (opModeIsActive()) {
             if (colorSensor.red() > colorSensor.blue() && colorSensor.red() > colorSensor.green()) {
                 telemetry.addData("color", "red");
                 telemetry.update();
                 mecanumDrive.turn(mecanumDrive.LEFT, 3, 1);
                 mecanumDrive.turn(mecanumDrive.RIGHT, 3, 1);
-                jewelPusher.Raise();
-                mecanumDrive.move(mecanumDrive.FORWARDS, 24, 1);
-                mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                jewelPusher.RaiseOne();
+                mecanumDrive.move(mecanumDrive.FORWARDS, 48, 0.7);
+                mecanumDrive.side(mecanumDrive.RIGHT, 11, 1);
                 mecanumDrive.move(mecanumDrive.FORWARDS, 18, 1);
                 sleep(500);
-                claw.open();
+                claw.closeOne();
                 sleep(1000);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 5, -1);
                 mecanumDrive.stop();
@@ -55,15 +57,15 @@ public class redAllianceII extends LinearOpMode{
             }
             sleep(10);
             if (colorSensor.blue() > colorSensor.red() && colorSensor.blue() > colorSensor.green()) {
-                telemetry.addData("color", "red");
+                telemetry.addData("color", "blue");
                 telemetry.update();
                 mecanumDrive.turn(mecanumDrive.RIGHT, 3, 1);
                 mecanumDrive.turn(mecanumDrive.LEFT, 3, 1);
-                jewelPusher.Raise();
-                mecanumDrive.move(mecanumDrive.FORWARDS, 24, 1);
-                mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                jewelPusher.RaiseOne();
+                mecanumDrive.move(mecanumDrive.FORWARDS, 48, 1);
+                mecanumDrive.side(mecanumDrive.RIGHT, 11, 1);
                 mecanumDrive.move(mecanumDrive.FORWARDS, 18, 1);
-                claw.open();
+                claw.closeOne();
                 sleep(2500);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 5, -1);
                 mecanumDrive.stop();
