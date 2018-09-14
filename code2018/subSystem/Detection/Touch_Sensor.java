@@ -1,4 +1,4 @@
-package Code18.code2018.subSystem.Detection;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;

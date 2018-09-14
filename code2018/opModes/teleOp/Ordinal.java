@@ -1,17 +1,16 @@
-package Code18.code2018.opModes.teleOp;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-import Code18.code2018.subSystem.Claw;
-import Code18.code2018.subSystem.Detection.NonContClaw;
-import Code18.code2018.subSystem.JewelPusher;
-import Code18.code2018.subSystem.Lift;
-import Code18.code2018.subSystem.MecanumDrive;
-import Code18.code2018.subSystem.Suspension;
-import Code18.code2018.subSystem.Continuous;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claw;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Lift;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Continuous;
 
 /**
  * Created by Titanium Allies on 11/3/2017.

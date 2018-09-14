@@ -1,8 +1,9 @@
-package Code18.code2018.opModes.teleOp;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import Code18.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
 
 /**
  * Created by Titanium Allies on 2/4/2018.

@@ -1,10 +1,11 @@
-package Code18.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import Code18.code2018.subSystem.Claw;
+
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claw;
 import Code18.code2018.subSystem.Detection.Color_Sensor;
 import Code18.code2018.subSystem.JewelPusher;
 import Code18.code2018.subSystem.Detection.Optical_Distance_Sensor;
