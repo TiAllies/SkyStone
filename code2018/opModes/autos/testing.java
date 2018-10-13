@@ -1,10 +1,10 @@
-package Code18.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import Code18.code2018.subSystem.MecanumDrive;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 

@@ -1,14 +1,14 @@
-package Code18.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import Code18.code2018.subSystem.Detection.Color_Sensor;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color_Sensor;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color_SensorTwo;
-import Code18.code2018.subSystem.JewelPusher;
-import Code18.code2018.subSystem.MecanumDrive;
-import Code18.code2018.subSystem.Suspension;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
 
 /**
  * Created by Titanium Allies on 11/11/2017.

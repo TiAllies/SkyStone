@@ -17,7 +17,7 @@ or http://modernroboticsinc.com/Content/Images/uploaded/Sensors/Sensor%20Documen
 Support is available by emailing support@modernroboticsinc.com.
 */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;

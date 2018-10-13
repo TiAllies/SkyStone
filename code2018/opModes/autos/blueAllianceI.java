@@ -6,10 +6,10 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claw;
-import Code18.code2018.subSystem.Detection.Color_Sensor;
-import Code18.code2018.subSystem.JewelPusher;
-import Code18.code2018.subSystem.Detection.Optical_Distance_Sensor;
-import Code18.code2018.subSystem.MecanumDrive;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color_Sensor;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Optical_Distance_Sensor;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 
 /**
  * Created by Titanium Allies on 11/10/2017.

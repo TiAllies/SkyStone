@@ -45,19 +45,19 @@ public class MecanumDrive {
     }
 
     public void motorRightFront(double power) {
-        _motorRightFront.setPower(power);
+        _motorRightFront.setPower(-power);
             }
 
     public void motorLeftFront(double power)  {
-        _motorLeftFront.setPower(power);
+        _motorLeftFront.setPower(-power);
         }
 
     public void motorRightBack (double power) {
-        _motorRightBack.setPower(power);
+        _motorRightBack.setPower(-power);
     }
 
     public void motorLeftBack (double power) {
-        _motorLeftBack.setPower(power);
+        _motorLeftBack.setPower(-power);
     }
 
     public void stop (){

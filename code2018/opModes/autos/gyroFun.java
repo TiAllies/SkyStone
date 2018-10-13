@@ -1,4 +1,4 @@
-package Code18.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;

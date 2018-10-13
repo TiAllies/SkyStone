@@ -26,7 +26,7 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package Code18.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -43,11 +43,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-import Code18.code2018.subSystem.MecanumDrive;
-import Code18.code2018.subSystem.JewelPusher;
-import Code18.code2018.subSystem.Detection.Color_Sensor;
-import Code18.code2018.subSystem.Suspension;
-//import Code18.code2018.subSystem.Continuous;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color_Sensor;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
+//import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Continuous;
 
 @Autonomous(name="Red Alliance Close", group ="Autonomous")
 
