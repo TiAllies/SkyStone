@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import static android.os.SystemClock.sleep;
@@ -39,25 +40,27 @@ public class MecanumDrive {
         _motorLeftFront = hardwareMap.dcMotor.get("leftFront");
         _motorLeftBack = hardwareMap.dcMotor.get("leftBack");
 
-        _motorLeftBack.setDirection(DcMotor.Direction.REVERSE);
-        _motorLeftFront.setDirection(DcMotor.Direction.REVERSE);
+        //_motorLeftBack.setDirection(DcMotor.Direction.REVERSE);
+        //_motorLeftFront.setDirection(DcMotor.Direction.REVERSE);
+        _motorRightBack.setDirection(DcMotor.Direction.REVERSE);
+        _motorRightFront.setDirection(DcMotor.Direction.REVERSE);
         _linearOpMode = linearOpMode;
     }
 
     public void motorRightFront(double power) {
-        _motorRightFront.setPower(-power);
+        _motorRightFront.setPower(power);
             }
 
     public void motorLeftFront(double power)  {
-        _motorLeftFront.setPower(-power);
+        _motorLeftFront.setPower(power);
         }
 
     public void motorRightBack (double power) {
-        _motorRightBack.setPower(-power);
+        _motorRightBack.setPower(power);
     }
 
     public void motorLeftBack (double power) {
-        _motorLeftBack.setPower(-power);
+        _motorLeftBack.setPower(power);
     }
 
     public void stop (){

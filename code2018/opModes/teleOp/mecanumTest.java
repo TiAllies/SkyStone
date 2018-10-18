@@ -29,10 +29,10 @@ public class mecanumTest extends OpMode{
     @Override
     public void loop() {
 
-        LEFTFRONT = ((gamepad1.left_stick_y / 4) - (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
-        RIGHTFRONT = ((gamepad1.left_stick_y / 4) + (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
-        LEFTBACK = ((gamepad1.left_stick_y / 4) + (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
-        RIGHTBACK = ((gamepad1.left_stick_y / 4) - (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
+        LEFTFRONT = ((gamepad1.left_stick_y / -4) - (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
+        RIGHTFRONT = ((gamepad1.left_stick_y / -4) + (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
+        LEFTBACK = ((gamepad1.left_stick_y / -4) + (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
+        RIGHTBACK = ((gamepad1.left_stick_y / -4) - (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
 
         if (Math.abs(gamepad1.right_stick_x) < .1) {
             LEFTFRONT = LEFTFRONT * 3;
