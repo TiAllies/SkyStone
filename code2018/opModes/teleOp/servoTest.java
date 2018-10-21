@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
 
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -12,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Continuous;
  * Created by Titanium Allies on 1/12/2018.
  */
 @TeleOp(name = "ServoTest",group = "TeleOp")
-
+@Disabled
 public class servoTest extends OpMode {
       Continuous continuous;
 

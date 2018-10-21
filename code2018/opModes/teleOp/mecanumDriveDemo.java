@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 
-@TeleOp(name="mecanumTest", group = "TeleOp")
+@TeleOp(name="mecanumDriveDemo", group = "TeleOp")
 
-public class mecanumTest extends OpMode{
+public class mecanumDriveDemo extends OpMode{
     MecanumDrive mecanumDrive;
 
     double LEFTFRONT;

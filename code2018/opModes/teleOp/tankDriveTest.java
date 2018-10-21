@@ -19,7 +19,27 @@ public class tankDriveTest extends OpMode {
     @Override
     public void loop() {
 
-        if (gamepad1.dpad_up){
+       double leftPower;
+       double rightPower;
+
+
+        leftPower = gamepad1.left_stick_y;
+        rightPower = gamepad1.right_stick_y;
+
+        if (gamepad1.left_stick_y > .999) {
+            gamepad1.left_stick_y = 1;
+        }
+
+        if (gamepad1.right_stick_y > .999){
+            gamepad1.right_stick_y = 1;
+        }
+        else tankdrive.stop();
+
+
+        tankdrive.leftSide(leftPower);
+        tankdrive.rightSide(rightPower);
+
+       /* if (gamepad1.dpad_up){
             tankdrive.forward(1);
         }
         if (gamepad1.dpad_down){
@@ -31,6 +51,6 @@ public class tankDriveTest extends OpMode {
         if (gamepad1.dpad_left){
             tankdrive.left(1);
         }
-        else tankdrive.stop();
+        else tankdrive.stop(); */
     }
 }

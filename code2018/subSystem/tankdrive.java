@@ -14,19 +14,24 @@ public class tankdrive {
         rightBack = hardwareMap.dcMotor.get("rightBack");
         leftFront = hardwareMap.dcMotor.get("leftFront");
         leftBack = hardwareMap.dcMotor.get("leftBack");
+
+
+        //if mecanum wheels use these to make this work
+       // leftBack.setDirection(DcMotor.Direction.REVERSE);
+       // leftFront.setDirection(DcMotor.Direction.REVERSE);
     }
-    public void forward(int power) {
+   /* public void forward(int power) {
         rightBack.setPower(power);
         rightFront.setPower(power);
-        leftBack.setPower(power);
-        leftFront.setPower(power);
+        leftBack.setPower(-power);
+        leftFront.setPower(-power);
     }
 
     public void backwards (int power) {
         rightBack.setPower(-power);
         rightFront.setPower(-power);
-        leftBack.setPower(-power);
-        leftFront.setPower(-power);
+        leftBack.setPower(power);
+        leftFront.setPower(power);
     }
 
     public void right (int power) {
@@ -41,13 +46,24 @@ public class tankdrive {
         rightFront.setPower(power);
         leftBack.setPower(-power);
         leftFront.setPower(-power);
+    }*/
+
+    public void leftSide (double power) {
+        leftFront.setPower(power);
+        leftBack.setPower(power);
     }
 
-    public void stop (){
-        rightBack.setPower(0);
-        rightFront.setPower(0);
-        leftBack.setPower(0);
-        leftFront.setPower(0);
+    public void rightSide (double power) {
+        rightFront.setPower(-power);
+        rightBack.setPower(-power);
     }
+
+    public void stop () {
+        rightFront.setPower(0);
+        rightBack.setPower(0);
+        leftFront.setPower(0);
+        leftBack.setPower(0);
+    }
+
 
 }
