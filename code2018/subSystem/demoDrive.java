@@ -16,11 +16,11 @@ public class demoDrive {
     }
 
     public void leftSide (double power) {
-        leftDrive.setPower(power);
+        leftDrive.setPower(-power);
     }
 
     public void rightSide (double power) {
-        rightDrive.setPower(power);
+        rightDrive.setPower(-power);
     }
 
     public void stop () {
