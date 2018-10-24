@@ -26,7 +26,7 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -44,20 +44,20 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs.JewelPusher;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color_Sensor;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
-//import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Continuous;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Continuous;
 
-@Autonomous(name="Red Alliance Close", group ="Autonomous")
+@Autonomous(name="Blue Alliance Far", group ="Autonomous")
 
-public class VuforiaTitaniumScarlet extends LinearOpMode {
+public class VuforiaTitaniumCyan extends LinearOpMode {
     private MecanumDrive mecanumDrive;
-    private Color_Sensor colorSensorTwo;
-   // private Claw claw;
+    private Color_Sensor colorSensor;
+    // private Claw claw;
     private JewelPusher jewelPusher;
     private Suspension suspension;
-    //private Continuous continuous;
+    private Continuous continuous;
 
     public static final String TAG = "Vuforia VuMark Sample";
 
@@ -67,16 +67,18 @@ public class VuforiaTitaniumScarlet extends LinearOpMode {
     public void initialize() {
 
         mecanumDrive = new MecanumDrive(hardwareMap, this);
-        colorSensorTwo = new Color_Sensor(hardwareMap);
-       // claw = new Claw(hardwareMap);
+        colorSensor = new Color_Sensor(hardwareMap);
+        // claw = new Claw(hardwareMap);
         jewelPusher = new JewelPusher(hardwareMap);
         suspension = new Suspension(hardwareMap);
-        //continuous = new Continuous(hardwareMap);
+        continuous = new Continuous(hardwareMap);
     }
 
     @Override public void runOpMode() throws InterruptedException {
 
+
         initialize();
+
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
@@ -93,6 +95,9 @@ public class VuforiaTitaniumScarlet extends LinearOpMode {
 
         relicTrackables.activate();
         while (opModeIsActive()) {
+
+
+
 
             RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
@@ -125,114 +130,94 @@ public class VuforiaTitaniumScarlet extends LinearOpMode {
 
             telemetry.update();
 
-            jewelPusher.LowerTwo();
-            if (colorSensorTwo.red() > colorSensorTwo.blue() && colorSensorTwo.red() > colorSensorTwo.green()) {
+            jewelPusher.RaiseTwo();
+            if (colorSensor.red() > colorSensor.blue() && colorSensor.red() > colorSensor.green()) {
                 //jewel phase
                 telemetry.addData("color", "red");
                 telemetry.update();
-                mecanumDrive.turn(mecanumDrive.RIGHT, 1, .1);
-                mecanumDrive.setZeroPowerBehavior();
-                jewelPusher.initPositionTwo();
-                mecanumDrive.turn(mecanumDrive.LEFT, 1, .1);
-                mecanumDrive.setZeroPowerBehavior();
+                mecanumDrive.turn(mecanumDrive.RIGHT, 3, 1);
+                jewelPusher.LowerTwo();
+                mecanumDrive.turn(mecanumDrive.LEFT, 3, 1);
                 //end of jewel phase
                 if (vuMark == vuMark.LEFT) {
                     telemetry.addData("position", "left");
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 37, 0.3);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.turn(mecanumDrive.RIGHT, 11, 0.5);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, .3);
-                    mecanumDrive.setZeroPowerBehavior();
-                    //continuous.release();
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.7);
+                    mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
+                    continuous.release();
                     sleep(1000);
-                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, .3);
-                    mecanumDrive.setZeroPowerBehavior();
+                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, -1);
+                    mecanumDrive.stop();
                     sleep(20000);
 
                 }else if (vuMark == vuMark.CENTER) {
                     telemetry.addData("position", "center");
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 29, 0.3);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.turn(mecanumDrive.RIGHT, 11, 0.5);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, .3);
-                    mecanumDrive.setZeroPowerBehavior();
-                    //continuous.release();
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.7);
+                    mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
+                    continuous.release();
                     sleep(1000);
-                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, .3);
-                    mecanumDrive.setZeroPowerBehavior();
+                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, -1);
+                    mecanumDrive.stop();
                     sleep(20000);
 
                 }else if (vuMark == vuMark.RIGHT) {
                     telemetry.addData("position", "center");
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 21, 0.3);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.turn(mecanumDrive.RIGHT, 11, 0.5);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, .3);
-                    mecanumDrive.setZeroPowerBehavior();
-                  //  continuous.release();
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.7);
+                    mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
+                    continuous.release();
                     sleep(1000);
-                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, .3);
-                    mecanumDrive.setZeroPowerBehavior();
+                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, -1);
+                    mecanumDrive.stop();
                     sleep(20000);
                 }
-                }
 
-                sleep(10);
-            if (colorSensorTwo.blue() > colorSensorTwo.red() && colorSensorTwo.blue() > colorSensorTwo.green()) {
+
+
+
+            }
+            sleep(10);
+            if (colorSensor.blue() > colorSensor.red() && colorSensor.blue() > colorSensor.green()) {
                 //start of jewel phase
                 telemetry.addData("color", "blue");
-                mecanumDrive.turn(mecanumDrive.LEFT, 1, .1);
-                mecanumDrive.setZeroPowerBehavior();
-                jewelPusher.initPositionTwo();
-                mecanumDrive.turn(mecanumDrive.RIGHT, 1, .1);
-                mecanumDrive.setZeroPowerBehavior();
+                mecanumDrive.turn(mecanumDrive.LEFT, 3, 1);
+                jewelPusher.LowerTwo();
+                mecanumDrive.turn(mecanumDrive.RIGHT, 3, 1);
                 //end of jewel phase
                 if (vuMark == vuMark.LEFT) {
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 37, 0.3);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.turn(mecanumDrive.RIGHT, 11, .5);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, .3);
-                    mecanumDrive.setZeroPowerBehavior();
-                   // continuous.release();
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.1);
+                    mecanumDrive.side(mecanumDrive.RIGHT, 20, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
+                    continuous.release();
                     sleep(1000);
-                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, .3);
-                    mecanumDrive.setZeroPowerBehavior();
+                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, 1);
+                    mecanumDrive.stop();
                     sleep(20000);
 
                 }else if (vuMark == vuMark.CENTER){
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 29, 0.3);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.turn(mecanumDrive.RIGHT, 11, .5);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, .3);
-                    mecanumDrive.setZeroPowerBehavior();
-                  //  continuous.release();
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.1);
+                    mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
+                    continuous.release();
                     sleep(1000);
-                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, .3);
-                    mecanumDrive.setZeroPowerBehavior();
+                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, 1);
+                    mecanumDrive.stop();
                     sleep(20000);
 
                 }else if (vuMark == vuMark.RIGHT){
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 21, 0.3);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.turn(mecanumDrive.RIGHT, 11, .5);
-                    mecanumDrive.setZeroPowerBehavior();
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, .3);
-                    mecanumDrive.setZeroPowerBehavior();
-                  //  continuous.release();
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.1);
+                    mecanumDrive.side(mecanumDrive.RIGHT, 4, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
+                    continuous.release();
                     sleep(1000);
-                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, .3);
-                    mecanumDrive.setZeroPowerBehavior();
+                    mecanumDrive.move(mecanumDrive.BACKWARDS, 5, 1);
+                    mecanumDrive.stop();
                     sleep(20000);
                 }
             }
-              }
-            }
-
+        }
+    }
     String format(OpenGLMatrix transformationMatrix) {
         return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
     }

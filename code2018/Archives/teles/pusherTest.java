@@ -1,10 +1,10 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.teles;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs.JewelPusher;
 
 /**
  * Created by Titanium Allies on 2/4/2018.

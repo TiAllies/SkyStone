@@ -1,12 +1,11 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claw;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color_Sensor;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs.JewelPusher;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Optical_Distance_Sensor;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 /**

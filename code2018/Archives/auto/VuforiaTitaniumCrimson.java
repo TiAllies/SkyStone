@@ -1,3 +1,4 @@
+
 /* Copyright (c) 2017 FIRST. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -26,12 +27,11 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.ConceptVuforiaNavigation;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.matrices.VectorF;
@@ -40,21 +40,19 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
-import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claw;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.JewelPusher;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs.JewelPusher;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color_Sensor;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Continuous;
 
-@Autonomous(name="Blue Alliance Far", group ="Autonomous")
+@Autonomous(name="Red Alliance Far", group ="Autonomous")
 
-public class VuforiaTitaniumCyan extends LinearOpMode {
+public class VuforiaTitaniumCrimson extends LinearOpMode {
     private MecanumDrive mecanumDrive;
     private Color_Sensor colorSensor;
     // private Claw claw;
@@ -133,19 +131,19 @@ public class VuforiaTitaniumCyan extends LinearOpMode {
 
             telemetry.update();
 
-            jewelPusher.RaiseTwo();
+            jewelPusher.LowerOne();
             if (colorSensor.red() > colorSensor.blue() && colorSensor.red() > colorSensor.green()) {
                 //jewel phase
                 telemetry.addData("color", "red");
                 telemetry.update();
                 mecanumDrive.turn(mecanumDrive.RIGHT, 3, 1);
-                jewelPusher.LowerTwo();
+                jewelPusher.RaiseOne();
                 mecanumDrive.turn(mecanumDrive.LEFT, 3, 1);
                 //end of jewel phase
                 if (vuMark == vuMark.LEFT) {
                     telemetry.addData("position", "left");
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.7);
-                    mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 48, 0.7);
+                    mecanumDrive.side(mecanumDrive.LEFT, 20, 1);
                     mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
                     continuous.release();
                     sleep(1000);
@@ -155,8 +153,8 @@ public class VuforiaTitaniumCyan extends LinearOpMode {
 
                 }else if (vuMark == vuMark.CENTER) {
                     telemetry.addData("position", "center");
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.7);
-                    mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 48, 0.7);
+                    mecanumDrive.side(mecanumDrive.LEFT, 12, 1);
                     mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
                     continuous.release();
                     sleep(1000);
@@ -166,8 +164,8 @@ public class VuforiaTitaniumCyan extends LinearOpMode {
 
                 }else if (vuMark == vuMark.RIGHT) {
                     telemetry.addData("position", "center");
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.7);
-                    mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 48, 0.7);
+                    mecanumDrive.side(mecanumDrive.LEFT, 4, 1);
                     mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
                     continuous.release();
                     sleep(1000);
@@ -176,21 +174,18 @@ public class VuforiaTitaniumCyan extends LinearOpMode {
                     sleep(20000);
                 }
 
-
-
-
             }
             sleep(10);
             if (colorSensor.blue() > colorSensor.red() && colorSensor.blue() > colorSensor.green()) {
                 //start of jewel phase
                 telemetry.addData("color", "blue");
                 mecanumDrive.turn(mecanumDrive.LEFT, 3, 1);
-                jewelPusher.LowerTwo();
+                jewelPusher.RaiseOne();
                 mecanumDrive.turn(mecanumDrive.RIGHT, 3, 1);
                 //end of jewel phase
                 if (vuMark == vuMark.LEFT) {
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.1);
-                    mecanumDrive.side(mecanumDrive.RIGHT, 20, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 37, 0.1);
+                    mecanumDrive.side(mecanumDrive.LEFT, 12, 1);
                     mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
                     continuous.release();
                     sleep(1000);
@@ -199,8 +194,8 @@ public class VuforiaTitaniumCyan extends LinearOpMode {
                     sleep(20000);
 
                 }else if (vuMark == vuMark.CENTER){
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.1);
-                    mecanumDrive.side(mecanumDrive.RIGHT, 12, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 29, 0.1);
+                    mecanumDrive.side(mecanumDrive.LEFT, 12, 1);
                     mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
                     continuous.release();
                     sleep(1000);
@@ -209,8 +204,8 @@ public class VuforiaTitaniumCyan extends LinearOpMode {
                     sleep(20000);
 
                 }else if (vuMark == vuMark.RIGHT){
-                    mecanumDrive.move(mecanumDrive.FORWARDS, 24, 0.1);
-                    mecanumDrive.side(mecanumDrive.RIGHT, 4, 1);
+                    mecanumDrive.move(mecanumDrive.FORWARDS, 21, 0.1);
+                    mecanumDrive.side(mecanumDrive.LEFT, 12, 1);
                     mecanumDrive.move(mecanumDrive.FORWARDS, 12, 1);
                     continuous.release();
                     sleep(1000);
