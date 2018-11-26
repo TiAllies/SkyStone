@@ -1,18 +1,19 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.teles;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claw;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs.Lift;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Lift;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 
 /**
  * Created by Titanium Allies on 11/3/2017.
  */
 @TeleOp(name = "Ordinal",group = "TeleOp")
-
+@Disabled
 public class Ordinal extends OpMode {
     MecanumDrive mecanumDrive;
     Claw claw;

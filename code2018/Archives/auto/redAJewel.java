@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color_Sensor;
@@ -13,6 +14,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
  * Created by Titanium Allies on 11/11/2017.
  */
 @Autonomous(name ="RedJewel",group="Autonomous" )
+@Disabled
 public class redAJewel extends LinearOpMode{
     private Color_Sensor color_sensor;
     private MecanumDrive mecanumDrive;

@@ -1,12 +1,14 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp.tests;
 
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.tankdrive;
 
 @TeleOp (name = "tankDriveTest", group = "TeleOp")
+@Disabled
 public class tankDriveTest extends OpMode {
 
     tankdrive tankdrive;

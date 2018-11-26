@@ -8,11 +8,12 @@ public class armAngle {
     private DcMotor Theta;
 
     public armAngle (HardwareMap hardwareMap) {
+
         Theta = hardwareMap.dcMotor.get("theta");
     }
 
     public void armPower (double power) {
-        Theta.setPower(.3*power);
+        Theta.setPower(.75*power);
     }
 
     public void stop () {

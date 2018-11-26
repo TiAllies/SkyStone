@@ -29,6 +29,7 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -51,7 +52,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Continuous;
 
 @Autonomous(name=" Blue Alliance Close", group ="Autonomous")
-
+@Disabled
 public class VuforiaTitaniumAqua extends LinearOpMode {
     private MecanumDrive mecanumDrive;
     private Color_Sensor colorSensor;

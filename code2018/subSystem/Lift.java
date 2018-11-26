@@ -1,7 +1,10 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
+import org.firstinspires.ftc.robotcontroller.external.samples.BasicOpMode_Linear;
 
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 
@@ -12,8 +15,21 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 public class Lift {
     private DcMotor _liftMotor;
 
+    public Lift(LinearOpMode linearOpMode) {
+        _linearOpMode = linearOpMode;
+    }
+
+    private LinearOpMode _linearOpMode;
+
     public Lift(HardwareMap hardwareMap){
+        this (hardwareMap, null);
+    }
+    public Lift(HardwareMap hardwareMap, LinearOpMode linearOpMode){
+
+        //super(linearOpMode);
+
         _liftMotor = hardwareMap.dcMotor.get("liftMotor");
+        _linearOpMode = linearOpMode;
     }
 
     //Raise lift
@@ -28,5 +44,13 @@ public class Lift {
     //Lower lift
     public void downwards(double power){
         _liftMotor.setPower(-power);
+    }
+
+    public void liftingPower (double power) {
+        _liftMotor.setPower(-power);
+    }
+
+    public void stop () {
+        _liftMotor.setPower(0);
     }
 }

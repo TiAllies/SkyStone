@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -15,6 +15,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
  * Created by Titanium Allies on 6/10/2018.
  */
 @TeleOp(name = "Titanium Gyro", group = "Sensor")
+@Disabled
 public class gyroFun extends LinearOpMode {
 
     IntegratingGyroscope gyro;

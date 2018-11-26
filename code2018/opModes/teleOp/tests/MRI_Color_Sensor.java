@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp.tests;
 
 /*
 Modern Robotics Color Sensor Example with color number

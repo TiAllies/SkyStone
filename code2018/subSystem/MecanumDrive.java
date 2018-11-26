@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import static android.os.SystemClock.sleep;
@@ -13,11 +12,11 @@ import static android.os.SystemClock.sleep;
 
 
 public class MecanumDrive {
-    private DcMotor _motorRightFront;
+    public DcMotor _motorRightFront;
     private DcMotor _motorRightBack;
     private DcMotor _motorLeftFront;
     private DcMotor _motorLeftBack;
-    private boolean brakeModeEnabled = true;
+
 
 
 
@@ -72,6 +71,13 @@ public class MecanumDrive {
         sleep(300);
     }
     public void forwards (double power) {
+        _motorLeftBack.setPower(-power);
+        _motorLeftFront.setPower(-power);
+        _motorRightFront.setPower(-power);
+        _motorRightBack.setPower(-power);
+    }
+
+    public void backwards (double power) {
         _motorLeftBack.setPower(power);
         _motorLeftFront.setPower(power);
         _motorRightFront.setPower(power);
@@ -79,9 +85,24 @@ public class MecanumDrive {
     }
 
     public void turnLeft (double power){
-        _motorLeftBack.setPower(-power);
+        _motorLeftBack.setPower(power);
+        _motorLeftFront.setPower(power);
+        _motorRightFront.setPower(-power);
+        _motorRightBack.setPower(-power);
+    }
+
+    public void isBusy () {
+        _motorRightFront.isBusy();
+        _motorLeftFront.isBusy();
+        _motorRightBack.isBusy();
+        _motorLeftBack.isBusy();
+    }
+
+
+    public void turnRight (double power) {
         _motorLeftFront.setPower(-power);
         _motorRightFront.setPower(power);
+        _motorLeftBack.setPower(-power);
         _motorRightBack.setPower(power);
     }
 

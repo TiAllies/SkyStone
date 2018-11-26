@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
 
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -9,7 +10,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 
 @TeleOp(name="mecanumDriveDemo", group = "TeleOp")
-
+@Disabled
 public class mecanumDriveDemo extends OpMode{
     MecanumDrive mecanumDrive;
 
@@ -29,10 +30,10 @@ public class mecanumDriveDemo extends OpMode{
     @Override
     public void loop() {
 
-        LEFTFRONT = ((gamepad1.left_stick_y / -4) - (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
-        RIGHTFRONT = ((gamepad1.left_stick_y / -4) + (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
-        LEFTBACK = ((gamepad1.left_stick_y / -4) + (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
-        RIGHTBACK = ((gamepad1.left_stick_y / -4) - (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
+        LEFTFRONT = ((gamepad1.left_stick_y / 4) - (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
+        RIGHTFRONT = ((gamepad1.left_stick_y / 4) + (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
+        LEFTBACK = ((gamepad1.left_stick_y / 4) + (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
+        RIGHTBACK = ((gamepad1.left_stick_y / 4) - (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
 
         if (Math.abs(gamepad1.right_stick_x) < .1) {
             LEFTFRONT = LEFTFRONT * 3;
