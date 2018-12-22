@@ -101,33 +101,50 @@ public class manualOverride extends OpMode{
             gamepad2.left_stick_y = 1;
         }
 
+        if (gamepad2.left_stick_y != 0) {
+            armAngle.armPower(thetaPower);
+        } else armAngle.stop();
+
         //setting the angle turning to how far the joystick is pushed
-        armAngle.armPower(thetaPower);
+
+
+
+
 
 
         //arm extension
 
         //if dpad up, then arm extends
-        extendPower = gamepad2.left_stick_x;
+        extendPower = gamepad2.right_stick_y;
 
-        if (gamepad2.left_stick_x > .99) {
-            gamepad2.left_stick_x = 1;
+        if (gamepad2.right_stick_y > .99) {
+            gamepad2.right_stick_y = 1;
         }
-
+        if (gamepad2.right_stick_y != 0 ){
             extension.extendingPower(extendPower);
+        }else extension.stop();
+
 
 
 
 
         // lift for hanging during endgame
 
-
-        liftPower = gamepad2.right_stick_y;
+        if (gamepad1.dpad_up){
+            liftPower = 1;
+        } else if (gamepad1.dpad_down){
+            liftPower = -1;
+        } else {
+            liftPower = 0;
+            lift.stop();
+        }
+        lift.lifing(liftPower);
+        /*liftPower = gamepad2.right_stick_y;
         if (gamepad2.right_stick_y > .99) {
             gamepad2.right_stick_y = 1;
         }
 
-            lift.liftingPower(liftPower);
+            lift.liftingPower(liftPower); */
 
 
 

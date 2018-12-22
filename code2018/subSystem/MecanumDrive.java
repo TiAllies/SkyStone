@@ -141,7 +141,7 @@ public class MecanumDrive {
         _motorRightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
-    public int convertEncoder (int distance) {
+    public int convertEncoder (double distance) {
         return (int) (distance*TICKS_PER_INCH);
     }
 
@@ -226,7 +226,7 @@ public class MecanumDrive {
         }
         stop();
     }
-     public void diagonal(int dr, int rl, int distance, double power){
+     public void diagonal(int dr, int rl, double distance, double power){
          setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
          distance = convertEncoder(distance);
 

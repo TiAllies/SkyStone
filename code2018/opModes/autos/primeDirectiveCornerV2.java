@@ -1,37 +1,31 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
 
-import android.graphics.Camera;
-import android.hardware.camera2.CameraDevice;
-
 import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.DogeCV;
 import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.Func;
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.robotcore.external.navigation.Position;
-import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Lift;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
 
 import java.util.Locale;
 
-
-@Autonomous (name = "CraterDirective" , group = "Autonomous")
-public class primeDirectiveCrater extends LinearOpMode {
+@Disabled
+@Autonomous (name = "CornerDirectiveV2" , group = "Autonomous")
+public class primeDirectiveCornerV2 extends LinearOpMode{
     private MecanumDrive mecanumDrive;
-     private armAngle armAngle;
-     private Lift lift;
+    // private armAngle armAngle;
+    private Lift lift;
     private GoldAlignDetector detector;
     private BNO055IMU imu;
     private Orientation angles;
@@ -39,15 +33,13 @@ public class primeDirectiveCrater extends LinearOpMode {
     double pi = 3.1415926;
 
 
-
-
-    public void initialize() {
+    public void initialize () {
         mecanumDrive = new MecanumDrive(hardwareMap, this);
         //mecanumDrive.setZeroPowerBehavior();
-           armAngle = new armAngle(hardwareMap);
-           armAngle.setZeroPowerBehavior();
-           lift = new Lift (hardwareMap);
-           lift.setZeroLift();
+        //   armAngle = new armAngle(hardwareMap);
+        //   armAngle.setZeroPower();
+        lift = new Lift (hardwareMap);
+        lift.setZeroLift();
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
@@ -81,7 +73,6 @@ public class primeDirectiveCrater extends LinearOpMode {
         detector.enable();
 
     }
-
 
     public void composeTelemetry() {
         telemetry.addAction(new Runnable() {
@@ -156,100 +147,113 @@ public class primeDirectiveCrater extends LinearOpMode {
     public void runOpMode() {
         initialize();
         waitForStart();
-        sleep(400);
-
-
-
-
-
-
         while (opModeIsActive()) {
             telemetry.addData("IsAligned", detector.getAligned()); // Is the bot aligned with the gold mineral?
             telemetry.addData("X Pos", detector.getXPosition()); // Gold X position.
             telemetry.update();
-            // if lift ends up working landing code goes here
+
+            //code for the lift goes here
 
 
 
             if (detector.getXPosition() > 100 && detector.getXPosition() < 350) {
 
-                mecanumDrive.side(mecanumDrive.LEFT, 28, .5);
 
-                mecanumDrive.side(mecanumDrive.RIGHT, 6, .5);
+                mecanumDrive.side(mecanumDrive.LEFT, 32, .5);
 
-                mecanumDrive.move(mecanumDrive.FORWARDS, 42, .8);
+                mecanumDrive.side(mecanumDrive.RIGHT, 16, .5);
 
-                mecanumDrive.turn(mecanumDrive.RIGHT, 25, .8);
+                mecanumDrive.move(mecanumDrive.FORWARDS, 40, .5);
 
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
+                mecanumDrive.turn(mecanumDrive.LEFT, 10, .3);
 
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 45, .4);
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
 
-                armAngle.DROP();
+                //code to drop off the marker goes here
 
-                mecanumDrive.side(mecanumDrive.RIGHT, 3, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 61, 1);
-                sleep(20000);
+                mecanumDrive.turn(mecanumDrive.LEFT, 2 , .5);
+                mecanumDrive.side(mecanumDrive.LEFT, 3, .5);
+                mecanumDrive.move(mecanumDrive.FORWARDS, 64, .8);
+
+
+
+                sleep(28000);
             } else if (detector.getXPosition() > 450 && detector.getXPosition() < 650) {
 
                 mecanumDrive.side(mecanumDrive.LEFT, 19, .5);
 
                 mecanumDrive.move(mecanumDrive.FORWARDS, 20, .5);
 
-                mecanumDrive.side(mecanumDrive.LEFT, 11, .5);
+                mecanumDrive.side(mecanumDrive.LEFT, 13, .5);
 
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
+                mecanumDrive.side(mecanumDrive.RIGHT, 13, .5);
 
-                mecanumDrive.move(mecanumDrive.FORWARDS, 20, .8);
+                mecanumDrive.move(mecanumDrive.FORWARDS, 20, .5);
 
-                mecanumDrive.turn(mecanumDrive.RIGHT, 25, .8);
+                mecanumDrive.turn(mecanumDrive.LEFT, 10, .3);
 
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
 
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 45, .4);
+                //code to drop the marker off goes here
 
-                armAngle.DROP();
+                mecanumDrive.turn(mecanumDrive.LEFT, 2 , .5);
+                mecanumDrive.side(mecanumDrive.LEFT, 3, .5);
+                mecanumDrive.move(mecanumDrive.FORWARDS, 64, .8);
 
-                mecanumDrive.side(mecanumDrive.RIGHT, 3, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 61, 1);
                 sleep(28000);
             } else if (detector.getXPosition() < 100) {
 
-                mecanumDrive.side(mecanumDrive.LEFT, 19 , .5);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 13, .5);
-                mecanumDrive.side(mecanumDrive.LEFT, 11, .5);
-                mecanumDrive.side(mecanumDrive.RIGHT, 15, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 55, .8);
-                mecanumDrive.turn(mecanumDrive.RIGHT, 25, .8);
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 44, .4);
+                mecanumDrive.side(mecanumDrive.LEFT, 19, .5);
 
-                armAngle.DROP();
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 20, .3);
 
-                mecanumDrive.turn(mecanumDrive.LEFT, 2, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 61, 1);
-                sleep(20000);
+                mecanumDrive.side(mecanumDrive.LEFT, 13, .5);
+
+                mecanumDrive.side(mecanumDrive.RIGHT, 13, .5);
+
+                mecanumDrive.move(mecanumDrive.FORWARDS, 60, .5);
+
+                mecanumDrive.turn(mecanumDrive.LEFT, 10, .3);
+
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
+
+                //code to drop the marker off goes here
+
+                mecanumDrive.turn(mecanumDrive.LEFT, 2 , .5);
+                mecanumDrive.side(mecanumDrive.LEFT, 3, .5);
+                mecanumDrive.move(mecanumDrive.FORWARDS, 64, .8);
+
+                sleep(28000);
 
             } else {
-                mecanumDrive.side(mecanumDrive.LEFT, 19 , .5);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 13, .5);
-                mecanumDrive.side(mecanumDrive.LEFT, 11, .5);
-                mecanumDrive.side(mecanumDrive.RIGHT, 15, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 55, .8);
-                mecanumDrive.turn(mecanumDrive.RIGHT, 24, .8);
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 44, .4);
 
-                armAngle.DROP();
+                mecanumDrive.side(mecanumDrive.LEFT, 19, .5);
 
-                mecanumDrive.turn(mecanumDrive.LEFT, 2, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 61, 1);
-                sleep(20000);
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 20, .3);
+
+                mecanumDrive.side(mecanumDrive.LEFT, 13, .5);
+
+                mecanumDrive.side(mecanumDrive.RIGHT, 13, .5);
+
+                mecanumDrive.move(mecanumDrive.FORWARDS, 60, .5);
+
+                mecanumDrive.turn(mecanumDrive.LEFT, 10, .3);
+
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
+
+                //code to drop the marker off goes here
+
+                mecanumDrive.turn(mecanumDrive.LEFT, 2 , .5);
+                mecanumDrive.side(mecanumDrive.LEFT, 3, .5);
+                mecanumDrive.move(mecanumDrive.FORWARDS, 64, .8);
+
+                sleep(28000);
             }
 
 
 
         }
         mecanumDrive.stop();
+
     }
 }

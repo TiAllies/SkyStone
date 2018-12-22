@@ -19,22 +19,14 @@ public class liftvalues extends LinearOpMode{
         mecanumDrive = new MecanumDrive(hardwareMap, this);
 
         lift.setZeroLift();
+        mecanumDrive.setZeroPowerBehavior();
     }
 
 
     public void runOpMode() {
             initialize();
             waitForStart();
-            mecanumDrive.move(MecanumDrive.BACKWARDS, 20, .5);
-            sleep(1000);
-            lift.upwards(.4);
-            sleep(600);
-            lift.stop();
-            sleep(100);
-            lift.downwards(.4);
-            sleep(600);
-            lift.stop();
-            sleep(20000);
+            lift.landing();
 
     }
 }
