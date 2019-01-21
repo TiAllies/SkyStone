@@ -71,7 +71,9 @@ public class Lift {
 
     public final static int DOWN = 1;
 
-    protected final double DIAMETER = (3/8);
+    protected final double DIAMETER = 0.375; //going to eventually be AxleDiameter + StringWidth
+    protected final double AxleDiameter = 0.375;
+    protected final double StringWidth = 0.1;
     protected final double CIRCUMFERENCE = DIAMETER*3.14159;
     protected final int TICKS_PER_ROTATION = 1100;
     protected final double TICKS_PER_INCH = TICKS_PER_ROTATION/CIRCUMFERENCE;

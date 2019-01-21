@@ -26,7 +26,7 @@ public class liftvalues extends LinearOpMode{
     public void runOpMode() {
             initialize();
             waitForStart();
-            lift.landing();
+            lift.LIFT(Lift.DOWN, 4, .8);
 
     }
 }

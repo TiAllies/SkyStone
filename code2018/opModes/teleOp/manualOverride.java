@@ -114,7 +114,6 @@ public class manualOverride extends OpMode{
 
         //arm extension
 
-        //if dpad up, then arm extends
         extendPower = gamepad2.right_stick_y;
 
         if (gamepad2.right_stick_y > .99) {
