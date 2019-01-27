@@ -10,8 +10,12 @@ public class Landing extends LinearOpMode{
     Lift lift;
     public void Initialize () {
         lift = new Lift(hardwareMap, this);
+        lift.setZeroLift();
     }
     public void runOpMode() throws InterruptedException {
-
+        Initialize();
+        waitForStart();
+        lift.LIFT(Lift.DOWN, 9, 1);
+        sleep(20000);
     }
 }

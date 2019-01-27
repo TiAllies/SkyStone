@@ -130,9 +130,9 @@ public class manualOverride extends OpMode{
         // lift for hanging during endgame
 
         if (gamepad1.dpad_up){
-            liftPower = 1;
-        } else if (gamepad1.dpad_down){
             liftPower = -1;
+        } else if (gamepad1.dpad_down){
+            liftPower = 1;
         } else {
             liftPower = 0;
             lift.stop();
