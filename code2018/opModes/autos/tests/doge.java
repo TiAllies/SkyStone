@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 
 
-@Disabled
+
 @Autonomous (name = "doge" , group = "Autonomous")
 public class doge extends LinearOpMode{
 
