@@ -20,7 +20,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
 
 import java.util.Locale;
 
-@Autonomous(name = "Corner[L + S]" , group = "Autonomous")
+@Autonomous(name = "Scanning[L + S]" , group = "Autonomous")
 public class scanCorner extends LinearOpMode {
     private MecanumDrive mecanumDrive;
     private org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle armAngle;
@@ -151,120 +151,35 @@ public class scanCorner extends LinearOpMode {
             telemetry.addData("X Pos", detector.getXPosition()); // Gold X position.
             telemetry.update();
 
-            //code for the lift goes here
+            lift.LIFT(Lift.DOWN, 13, 1);
+            sleep(700);
+            mecanumDrive.move(mecanumDrive.BACKWARDS, 5, .6);
+            mecanumDrive.side(mecanumDrive.RIGHT, 3, 1);
+            mecanumDrive.move(mecanumDrive.FORWARDS, 5, 1);
 
+            sleep(700);
+            if (detector.getXPosition() >= 1 && detector.getXPosition() <= 300) {
 
-
-            if (detector.getXPosition() > 50 && detector.getXPosition() < 350) {
-
-
-                mecanumDrive.side(mecanumDrive.LEFT, 32, .7);
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 16, .7);
-
-                mecanumDrive.move(mecanumDrive.FORWARDS, 40, .65);
-
-                mecanumDrive.turn(mecanumDrive.LEFT, 10, .8);
-
-                mecanumDrive.side(mecanumDrive.LEFT, 6, .7);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
-
-                armAngle.DROP();
-
-                mecanumDrive.side(mecanumDrive.LEFT, 3, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 31, .8);
-                mecanumDrive.side(mecanumDrive.LEFT, 6, .8);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 37, .8);
-
+                mecanumDrive.move(mecanumDrive.FORWARDS, 3, 1);
+                mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 
 
                 sleep(28000);
-            } else if (detector.getXPosition() > 400 && detector.getXPosition() < 650) {
+            } else if (detector.getXPosition() >= 350 && detector.getXPosition() <= 650) {
 
-                mecanumDrive.side(mecanumDrive.LEFT, 19, .7);
 
-                mecanumDrive.move(mecanumDrive.FORWARDS, 16, .7);
-
-                mecanumDrive.side(mecanumDrive.LEFT, 13, .7);
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 13, .7);
-
-                mecanumDrive.move(mecanumDrive.FORWARDS, 20, .7);
-
-                mecanumDrive.turn(mecanumDrive.LEFT, 10, .8);
-
-                mecanumDrive.side(mecanumDrive.LEFT, 6, .7);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
-
-                armAngle.DROP();
-
-                mecanumDrive.side(mecanumDrive.LEFT, 3, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 31, .8);
-                mecanumDrive.side(mecanumDrive.LEFT, 6, .8);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 37, .8);
+                mecanumDrive.move(mecanumDrive.FORWARDS, 7, .7);
+                mecanumDrive.turn(mecanumDrive.LEFT, 6, 1);
+                mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 
                 sleep(28000);
-            } else if (detector.getXPosition() < 100) {
-
-                mecanumDrive.side(mecanumDrive.LEFT, 19, .7);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 15, .7);
-
-                mecanumDrive.side(mecanumDrive.LEFT, 13, .7);
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 13, .7);
-
-                mecanumDrive.move(mecanumDrive.FORWARDS, 48, .8);
-
-                mecanumDrive.turn(mecanumDrive.LEFT, 10, .8);
-
-                mecanumDrive.side(mecanumDrive.LEFT, 6, .7);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
-
-                armAngle.DROP();
-
-                mecanumDrive.side(mecanumDrive.LEFT, 3, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 31, .8);
-                mecanumDrive.side(mecanumDrive.LEFT, 6, .8);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 37, .8);
-
-                sleep(28000);
-
             } else {
-
-                mecanumDrive.side(mecanumDrive.LEFT, 19, .7);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 15, .7);
-
-                mecanumDrive.side(mecanumDrive.LEFT, 13, .7);
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 13, .7);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
-
-                mecanumDrive.turn(mecanumDrive.LEFT, 10, .8);
-
-                mecanumDrive.side(mecanumDrive.LEFT, 6, .7);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 48, .8);
-
-                armAngle.DROP();
-
-                mecanumDrive.side(mecanumDrive.LEFT, 3, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 31, .8);
-                mecanumDrive.side(mecanumDrive.LEFT, 6, .8);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 37, .8);
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 10, .7);
+                mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 
                 sleep(28000);
             }
-
-
-
         }
         mecanumDrive.stop();
-
     }
 }

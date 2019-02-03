@@ -149,9 +149,9 @@ public class NLSampleCorner extends LinearOpMode {
 
 
 
-            if (detector.getXPosition() >= 0 && detector.getXPosition() <= 300) {
+            if (detector.getXPosition() >= 1 && detector.getXPosition() <= 300) {
 
-
+                mecanumDrive.move(mecanumDrive.FORWARDS, 3, 1);
                 mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 
 
@@ -159,20 +159,14 @@ public class NLSampleCorner extends LinearOpMode {
             } else if (detector.getXPosition() >= 350 && detector.getXPosition() <= 650) {
 
 
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 10, .7);
+                mecanumDrive.move(mecanumDrive.FORWARDS, 7, .7);
+                mecanumDrive.turn(mecanumDrive.LEFT, 6, 1);
                 mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 
                 sleep(28000);
-            } else if (detector.getXPosition() <= 100) {
-
-                mecanumDrive.move(mecanumDrive.FORWARDS, 10, .7);
-                mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
-
-                sleep(28000);
-
             } else {
 
-                mecanumDrive.move(mecanumDrive.FORWARDS, 10, .7);
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 10, .7);
                 mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 
                 sleep(28000);
