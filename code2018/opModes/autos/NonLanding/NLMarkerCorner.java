@@ -1,12 +1,13 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos.NonLanding;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Extension;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
-
+@Disabled
 @Autonomous(name="NLCorner [M]", group = "Autonomous")
 public class NLMarkerCorner extends LinearOpMode {
     MecanumDrive mecanumDrive;

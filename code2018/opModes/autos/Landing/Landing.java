@@ -146,12 +146,15 @@ public class Landing extends LinearOpMode{
             telemetry.addData("X Pos", detector.getXPosition()); // Gold X position.
             telemetry.update();
 
+            //landing
             lift.LIFT(Lift.DOWN, 13, 1);
             sleep(700);
             mecanumDrive.move(mecanumDrive.BACKWARDS, 5, .6);
             mecanumDrive.side(mecanumDrive.RIGHT, 3, 1);
             mecanumDrive.move(mecanumDrive.FORWARDS, 5, 1);
 
+
+            // Sampling
             sleep(700);
             if (detector.getXPosition() >= 1 && detector.getXPosition() <= 300) {
 

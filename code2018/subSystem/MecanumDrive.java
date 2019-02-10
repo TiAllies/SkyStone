@@ -155,7 +155,7 @@ public class MecanumDrive {
         _motorRightBack.setTargetPosition((_motorRightBack.getCurrentPosition() - (direction*distance)));
         _motorRightFront.setTargetPosition((_motorRightFront.getCurrentPosition() - (direction*distance)));
 
-        sleep(100);
+        sleep(50);
         _motorLeftBack.setPower(power);
         _motorRightFront.setPower(power);
         _motorRightBack.setPower(power);
@@ -182,7 +182,7 @@ public class MecanumDrive {
         _motorRightBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() + (direction*distance)));
         _motorRightFront.setTargetPosition((int)(_motorRightFront.getCurrentPosition() - (direction*distance)));
 
-        sleep(100);
+        sleep(50);
         _motorLeftBack.setPower(power);
         _motorRightFront.setPower(power);
         _motorRightBack.setPower(power);
@@ -209,7 +209,7 @@ public class MecanumDrive {
         _motorRightBack.setTargetPosition((int)(_motorRightBack.getCurrentPosition() + (direction*distance)));
         _motorRightFront.setTargetPosition((int)(_motorRightFront.getCurrentPosition() + (direction*distance)));
 
-        sleep(100);
+        sleep(50);
         _motorLeftBack.setPower(power);
         _motorRightFront.setPower(power);
         _motorRightBack.setPower(power);

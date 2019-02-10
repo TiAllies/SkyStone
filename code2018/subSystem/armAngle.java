@@ -29,7 +29,7 @@ public class armAngle {
     }
 
     public void armPower (double power) {
-        Theta.setPower(.40*power);
+        Theta.setPower(.7*-power);
     }
 
     public void stop () {
@@ -46,6 +46,52 @@ public class armAngle {
         Theta.setPower(.4);
         sleep(300);
         Theta.setPower(0);
+        stop();
+    }
+
+
+    //autonomous
+
+
+
+    public final static int FORWARDS = -1;
+    public final static int BACKWARDS = 1;
+
+    protected final double DIAMETER = 1.5;
+    protected final double CIRCUMFERENCE = DIAMETER*3.14159;
+    protected final int TICKS_PER_ROTATION = 1100;
+    protected final double TICKS_PER_INCH = TICKS_PER_ROTATION/CIRCUMFERENCE;
+
+    public void setMotorMode (DcMotor.RunMode mode) {
+        Theta.setMode(mode);
+
+    }
+    public void resetEncoders (){
+        Theta.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+    }
+
+    public int convertEncoder (double distance) {
+        return (int) (distance*TICKS_PER_INCH);
+    }
+
+    //Error somewhere in the following code
+    public void tilt(int direction, int distance, double power){
+        setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
+        distance = convertEncoder(distance);
+        Theta.setTargetPosition((Theta.getCurrentPosition() - (direction*distance)));
+
+        sleep(100);
+        Theta.setPower(power);
+
+
+        while (Theta.isBusy() && _linearOpMode.opModeIsActive()){
+
+
+            _linearOpMode.telemetry.addData("Right Back Distance", Math.abs(Theta.getCurrentPosition() - Theta.getTargetPosition()));
+            _linearOpMode.telemetry.update();
+            _linearOpMode.idle();
+        }
         stop();
     }
 

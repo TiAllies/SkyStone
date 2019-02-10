@@ -5,8 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Extension;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Grabber;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Lift;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.tankdrive;
 
 @TeleOp(name = "liftTest", group = "TeleOp")
@@ -14,12 +17,22 @@ public class liftTest extends OpMode {
 
     Lift lift;
     MecanumDrive mecanumDrive;
+    Extension extension;
+    armAngle ArmAngle;
+
+    Grabber grabber;
 
 
     double LEFTFRONT;
     double RIGHTFRONT;
     double LEFTBACK;
     double RIGHTBACK;
+
+    double FLEXPOWER;
+
+    double EXTEND;
+
+    double TILTED;
     @Override
     public void init() {
         lift = new Lift(hardwareMap);
@@ -28,8 +41,14 @@ public class liftTest extends OpMode {
         mecanumDrive = new MecanumDrive(hardwareMap);
         mecanumDrive.setZeroPowerBehavior();
 
+        extension = new Extension(hardwareMap);
+        extension.setZeroPowerBehavior();
 
+        ArmAngle = new armAngle(hardwareMap);
+        ArmAngle.setZeroPowerBehavior();
 
+        grabber = new Grabber(hardwareMap);
+        grabber.setZeroPowerBehavior();
 
     }
 
@@ -83,11 +102,52 @@ public class liftTest extends OpMode {
         }
 
 
-        mecanumDrive.motorLeftBack(LEFTBACK);
-        mecanumDrive.motorLeftFront(LEFTFRONT);
-        mecanumDrive.motorRightBack(RIGHTBACK);
-        mecanumDrive.motorRightFront(RIGHTFRONT);
+        mecanumDrive.motorLeftBack(LEFTBACK * .9);
+        mecanumDrive.motorLeftFront(LEFTFRONT * .9);
+        mecanumDrive.motorRightBack(RIGHTBACK * .9);
+        mecanumDrive.motorRightFront(RIGHTFRONT * .9);
 
+
+
+        // extension
+        EXTEND = gamepad2.right_stick_y;
+
+        extension.movement(EXTEND *.7);
+
+        EXTEND = Range.clip(EXTEND, -1, 1);
+
+        if (gamepad2.right_stick_y > .999) {
+            gamepad2.right_stick_y = 1;
+        }
+
+        if (gamepad2.right_stick_y < -.999) {
+            gamepad2.right_stick_y = -1;
+        }
+
+
+
+        //arm rotation
+        TILTED = gamepad2.left_stick_y;
+
+        ArmAngle.armPower(TILTED * .8);
+
+        TILTED = Range.clip(TILTED, -1, 1);
+
+        if (gamepad2.left_stick_y > .999) {
+            gamepad2.left_stick_y = 1;
+        }
+
+        if (gamepad2.left_stick_y < -.999) {
+            gamepad2.left_stick_y = -1;
+        }
+
+        //flexshaft
+
+        FLEXPOWER = gamepad2.right_trigger;
+
+        Range.clip(FLEXPOWER, 0, 1);
+
+        grabber.spin(-FLEXPOWER);
 
     }
 }

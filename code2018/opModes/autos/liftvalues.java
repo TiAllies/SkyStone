@@ -2,11 +2,12 @@ package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Lift;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
-
+@Disabled
 @Autonomous (name = "liftTesting" , group = "Autonomous")
 public class liftvalues extends LinearOpMode{
     Lift lift;

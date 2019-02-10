@@ -6,6 +6,7 @@ import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.Func;
@@ -19,7 +20,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
 
 import java.util.Locale;
-
+@Disabled
 @Autonomous(name = "NL Corner [S]" , group = "Autonomous")
 public class NLSampleCorner extends LinearOpMode {
     private MecanumDrive mecanumDrive;
@@ -145,9 +146,6 @@ public class NLSampleCorner extends LinearOpMode {
             telemetry.addData("X Pos", detector.getXPosition()); // Gold X position.
             telemetry.update();
 
-            //code for the lift goes here
-
-
 
             if (detector.getXPosition() >= 1 && detector.getXPosition() <= 300) {
 
@@ -165,7 +163,6 @@ public class NLSampleCorner extends LinearOpMode {
 
                 sleep(28000);
             } else {
-
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 10, .7);
                 mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 

@@ -37,6 +37,10 @@ public class Extension {
         Extender.setPower(power);
     }
 
+    public void movement (double power) {
+        Extender.setPower(power);
+    }
+
     public void stop () {
         Extender.setPower(0);
     }

@@ -27,7 +27,9 @@ public class flexTest extends OpMode{
             grabber.resetCube();
         }else if (gamepad2.dpad_down) {
             grabber.resetSphere();
-        } else {grabber.stop();}
+        } else if (gamepad1.dpad_down){
+            grabber.spin(-1);
+        }else {grabber.stop();}
 
     }
 }
