@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos.tests;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;

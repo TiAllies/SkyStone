@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos.NonLanding;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto.NonLanding;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;

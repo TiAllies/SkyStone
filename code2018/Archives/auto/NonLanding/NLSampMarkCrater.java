@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos.Landing;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto.NonLanding;
 
 import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.DogeCV;
@@ -17,32 +17,25 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Lift;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
 
 import java.util.Locale;
-
 @Disabled
-@Autonomous (name = "ExaltedCrater [L + M + P]" , group = "Autonomous")
-public class MarkParkCrater extends LinearOpMode {
-    private MecanumDrive mecanumDrive;
-     private armAngle armAngle;
-     private Lift lift;
+@Autonomous (name="NLCrater [S + M]", group = "Autonomous")
+public class NLSampMarkCrater extends LinearOpMode {
+    Lift lift;
+    MecanumDrive mecanumDrive;
     private GoldAlignDetector detector;
     private BNO055IMU imu;
     private Orientation angles;
     private Acceleration gravity;
     double pi = 3.1415926;
 
+    public void Initialize() {
+        lift = new Lift(hardwareMap, this);
+        lift.setZeroLift();
 
-
-
-    public void initialize() {
         mecanumDrive = new MecanumDrive(hardwareMap, this);
-        //mecanumDrive.setZeroPowerBehavior();
-           armAngle = new armAngle(hardwareMap);
-           armAngle.setZeroPowerBehavior();
-           lift = new Lift (hardwareMap);
-           lift.setZeroLift();
+        mecanumDrive.setZeroPowerBehavior();
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
@@ -74,9 +67,7 @@ public class MarkParkCrater extends LinearOpMode {
         detector.ratioScorer.perfectRatio = 1.0;
 
         detector.enable();
-
     }
-
 
     public void composeTelemetry() {
         telemetry.addAction(new Runnable() {
@@ -147,103 +138,39 @@ public class MarkParkCrater extends LinearOpMode {
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
 
-    @Override
-    public void runOpMode() {
-        initialize();
+    public void runOpMode() throws InterruptedException {
+        Initialize();
         waitForStart();
-        sleep(400);
-
-
-
-
-
-
         while (opModeIsActive()) {
             telemetry.addData("IsAligned", detector.getAligned()); // Is the bot aligned with the gold mineral?
             telemetry.addData("X Pos", detector.getXPosition()); // Gold X position.
             telemetry.update();
-            // if lift ends up working landing code goes here
+
+            // Sampling
+            sleep(700);
+            if (detector.getXPosition() >= 1 && detector.getXPosition() <= 300) {
+
+                mecanumDrive.move(mecanumDrive.FORWARDS, 3, 1);
+                mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
+                mecanumDrive.side(mecanumDrive.LEFT, 10, .7);
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 36, 1);
 
 
-
-            if (detector.getXPosition() > 100 && detector.getXPosition() < 350) {
-
-                mecanumDrive.side(mecanumDrive.LEFT, 28, .5);
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 6, .5);
-
-                mecanumDrive.move(mecanumDrive.FORWARDS, 42, .8);
-
-                mecanumDrive.turn(mecanumDrive.RIGHT, 25, .8);
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 45, .4);
-
-                armAngle.DROP();
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 3, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 61, 1);
-                sleep(20000);
-            } else if (detector.getXPosition() > 450 && detector.getXPosition() < 650) {
-
-                mecanumDrive.side(mecanumDrive.LEFT, 19, .5);
-
-                mecanumDrive.move(mecanumDrive.FORWARDS, 20, .5);
-
-                mecanumDrive.side(mecanumDrive.LEFT, 11, .5);
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
-
-                mecanumDrive.move(mecanumDrive.FORWARDS, 20, .8);
-
-                mecanumDrive.turn(mecanumDrive.RIGHT, 25, .8);
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
-
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 45, .4);
-
-                armAngle.DROP();
-
-                mecanumDrive.side(mecanumDrive.RIGHT, 3, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 61, 1);
                 sleep(28000);
-            } else if (detector.getXPosition() < 100) {
+            } else if (detector.getXPosition() >= 350 && detector.getXPosition() <= 650) {
 
-                mecanumDrive.side(mecanumDrive.LEFT, 19 , .5);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 13, .5);
-                mecanumDrive.side(mecanumDrive.LEFT, 11, .5);
-                mecanumDrive.side(mecanumDrive.RIGHT, 15, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 55, .8);
-                mecanumDrive.turn(mecanumDrive.RIGHT, 25, .8);
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 44, .4);
 
-                armAngle.DROP();
+                mecanumDrive.move(mecanumDrive.FORWARDS, 7, .7);
+                mecanumDrive.turn(mecanumDrive.LEFT, 6, 1);
+                mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 
-                mecanumDrive.turn(mecanumDrive.LEFT, 2, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 61, 1);
-                sleep(20000);
-
+                sleep(28000);
             } else {
-                mecanumDrive.side(mecanumDrive.LEFT, 19 , .5);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 13, .5);
-                mecanumDrive.side(mecanumDrive.LEFT, 11, .5);
-                mecanumDrive.side(mecanumDrive.RIGHT, 15, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 55, .8);
-                mecanumDrive.turn(mecanumDrive.RIGHT, 24, .8);
-                mecanumDrive.side(mecanumDrive.RIGHT, 11, .5);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 44, .4);
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 10, .7);
+                mecanumDrive.side(mecanumDrive.RIGHT, 25, .7);
 
-                armAngle.DROP();
-
-                mecanumDrive.turn(mecanumDrive.LEFT, 2, .5);
-                mecanumDrive.move(mecanumDrive.FORWARDS, 61, 1);
-                sleep(20000);
+                sleep(28000);
             }
-
-
-
         }
         mecanumDrive.stop();
     }
