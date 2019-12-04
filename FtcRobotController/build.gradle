@@ -6,7 +6,7 @@ apply plugin: 'com.android.library'
 android {
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 26
     }
 
@@ -19,9 +19,7 @@ android {
 }
 
 repositories {
-    flatDir {
-        dirs '../libs'
-    }
+    flatDir { dirs '../libs' }
 }
 
 apply from: 'build.release.gradle'
