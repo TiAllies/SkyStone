@@ -144,10 +144,10 @@ public class Meccanum{
         double hypo = Math.sqrt((Math.pow(xMotorPower, 2))+(Math.pow(yMotorPower, 2)));
         double hypoPow;
         double turnpow = turnMotorPower;
-        if (turnMotorPower < .05) {
+        if (Math.abs(turnMotorPower) < .05) {
             turnpow = 0;
         } else {
-            turnpow = turnMotorPower;
+            turnpow = 1/turnMotorPower;
         }
 
 
@@ -158,7 +158,7 @@ public class Meccanum{
             hypoPow = 1/hypo;
         }
         double maxPow = Math.max(Math.max(Math.abs(leftFront), Math.abs(rightFront)), Math.max(Math.abs(leftBack), Math.abs(rightBack)));
-        double powScale = Math.max(hypoPow, Math.abs(1/turnMotorPower));
+        double powScale = Math.max(hypoPow, Math.abs(turnpow));
         if(maxPow < .1)
         {
             leftFront = 0.0;
