@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -10,9 +11,11 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs.JewelPusher
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
 
+*/
 /**
  * Created by Titanium Allies on 11/11/2017.
- */
+ *//*
+
 @Disabled
 @Autonomous(name ="RedJewel",group="Autonomous" )
     public class redJewel extends LinearOpMode{
@@ -43,3 +46,4 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Suspension;
                 mecanumDrive.turn(mecanumDrive.RIGHT, 3, .1);
                 jewelPusher.initPositionOne();
             }}}}
+*/

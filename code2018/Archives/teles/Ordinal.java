@@ -38,7 +38,7 @@ public class Ordinal extends OpMode {
 
     @Override
     public void init() {
-        mecanumDrive = new MecanumDrive(hardwareMap);
+       // mecanumDrive = new MecanumDrive(hardwareMap);
         claw = new Claw(hardwareMap);
         //rotator = new Rotator(hardwareMap);
         lift = new Lift(hardwareMap);

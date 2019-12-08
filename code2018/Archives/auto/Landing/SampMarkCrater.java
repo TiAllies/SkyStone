@@ -1,11 +1,10 @@
+/*
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto.Landing;
 
-import com.disnodeteam.dogecv.CameraViewDisplay;
-import com.disnodeteam.dogecv.DogeCV;
-import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.Func;
@@ -21,6 +20,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
 
 import java.util.Locale;
 @Autonomous (name = "Crater (L + S + M)", group = "Autonomous")
+@Disabled
 public class SampMarkCrater extends LinearOpMode{
     Lift lift;
     MecanumDrive mecanumDrive;
@@ -165,7 +165,8 @@ public class SampMarkCrater extends LinearOpMode{
                 mecanumDrive.move(mecanumDrive.FORWARDS, 3, 1);
                 mecanumDrive.side(mecanumDrive.RIGHT, 25, 1);
                 mecanumDrive.side(mecanumDrive.LEFT, 10, 1);
-                /*mecanumDrive.move(mecanumDrive.FORWARDS, 37, 1);
+                */
+/*mecanumDrive.move(mecanumDrive.FORWARDS, 37, 1);
                 mecanumDrive.turn(mecanumDrive.RIGHT, 29, 1);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 32, 1);
                 Armangle.tilt(armAngle.FORWARDS, 5, .7);
@@ -173,7 +174,8 @@ public class SampMarkCrater extends LinearOpMode{
                 mecanumDrive.move(mecanumDrive.FORWARDS, 27, 1);
                 mecanumDrive.turn(mecanumDrive.RIGHT, 32, 1);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 20, 1);
-                extension.Extend(Extension.OUT, 10, 1);*/
+                extension.Extend(Extension.OUT, 10, 1);*//*
+
 
 
                 sleep(28000);
@@ -183,7 +185,8 @@ public class SampMarkCrater extends LinearOpMode{
                 mecanumDrive.move(mecanumDrive.FORWARDS, 8, 1);
                 mecanumDrive.turn(mecanumDrive.LEFT, 6, 1);
                 mecanumDrive.side(mecanumDrive.RIGHT, 25, 1);
-               /* mecanumDrive.move(mecanumDrive.FORWARDS, 27, 1);
+               */
+/* mecanumDrive.move(mecanumDrive.FORWARDS, 27, 1);
                 mecanumDrive.turn(mecanumDrive.RIGHT, 29, 1);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 32, 1);
                 Armangle.tilt(armAngle.FORWARDS, 5, .7);
@@ -191,13 +194,15 @@ public class SampMarkCrater extends LinearOpMode{
                 mecanumDrive.move(mecanumDrive.FORWARDS, 27, 1);
                 mecanumDrive.turn(mecanumDrive.RIGHT, 32, 1);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 20, 1);
-                extension.Extend(Extension.OUT, 10, 1);*/
+                extension.Extend(Extension.OUT, 10, 1);*//*
+
 
                 sleep(28000);
             } else {
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 9, 1);
                 mecanumDrive.side(mecanumDrive.RIGHT, 25, 1);
-                /*mecanumDrive.side(mecanumDrive.LEFT, 15, 1);
+                */
+/*mecanumDrive.side(mecanumDrive.LEFT, 15, 1);
                 mecanumDrive.move(mecanumDrive.FORWARDS, 34, 1);
                 mecanumDrive.turn(mecanumDrive.RIGHT, 29, 1);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 32, 1);
@@ -206,7 +211,8 @@ public class SampMarkCrater extends LinearOpMode{
                 mecanumDrive.move(mecanumDrive.FORWARDS, 27, 1);
                 mecanumDrive.turn(mecanumDrive.RIGHT, 32, 1);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 20, 1);
-                extension.Extend(Extension.OUT, 10, 1);*/
+                extension.Extend(Extension.OUT, 10, 1);*//*
+
 
                 sleep(28000);
             }
@@ -214,3 +220,4 @@ public class SampMarkCrater extends LinearOpMode{
         mecanumDrive.stop();
     }
 }
+*/

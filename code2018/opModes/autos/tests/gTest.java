@@ -20,13 +20,12 @@ import java.util.Locale;
 @Disabled
 @Autonomous (name = "gTest" , group = "Autonomous")
 public class gTest extends LinearOpMode{
-    MecanumDrive mecanumDrive;
     BNO055IMU imu;
     Orientation angles;
     Acceleration gravity;
 
     public void initialize () {
-        mecanumDrive = new MecanumDrive(hardwareMap);
+
 
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
@@ -107,15 +106,11 @@ public class gTest extends LinearOpMode{
     public void runOpMode() throws InterruptedException {
         initialize();
         telemetry.update();
-        mecanumDrive.setZeroPowerBehavior();
         waitForStart();
         imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
         while (opModeIsActive()) {
             telemetry.update();
 
-            if (10>angles.firstAngle && angles.firstAngle<20){
-                mecanumDrive.turnRight(.4);
-            } else mecanumDrive.stop();
         }
 
 

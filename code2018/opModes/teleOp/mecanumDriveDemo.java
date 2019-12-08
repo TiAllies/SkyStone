@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 @TeleOp(name="mecanumDriveDemo", group = "TeleOp")
 @Disabled
 public class mecanumDriveDemo extends OpMode{
-    MecanumDrive mecanumDrive;
+    // MecanumDrive mecanumDrive;
 
     double LEFTFRONT;
     double RIGHTFRONT;
@@ -21,7 +21,7 @@ public class mecanumDriveDemo extends OpMode{
 
     @Override
     public void init() {
-        mecanumDrive = new MecanumDrive(hardwareMap);
+//        mecanumDrive = new MecanumDrive(hardwareMap);
 
 
 
@@ -30,7 +30,7 @@ public class mecanumDriveDemo extends OpMode{
     @Override
     public void loop() {
 
-        LEFTFRONT = ((gamepad1.left_stick_y / 4) - (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
+        /*LEFTFRONT = ((gamepad1.left_stick_y / 4) - (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
         RIGHTFRONT = ((gamepad1.left_stick_y / 4) + (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
         LEFTBACK = ((gamepad1.left_stick_y / 4) + (gamepad1.left_stick_x) / 4) - (gamepad1.right_stick_x / 2);
         RIGHTBACK = ((gamepad1.left_stick_y / 4) - (gamepad1.left_stick_x) / 4) + (gamepad1.right_stick_x / 2);
@@ -60,6 +60,6 @@ public class mecanumDriveDemo extends OpMode{
         mecanumDrive.motorLeftBack(LEFTBACK);
         mecanumDrive.motorLeftFront(LEFTFRONT);
         mecanumDrive.motorRightBack(RIGHTBACK);
-        mecanumDrive.motorRightFront(RIGHTFRONT);
+        mecanumDrive.motorRightFront(RIGHTFRONT);*/
     }
 }

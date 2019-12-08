@@ -1,8 +1,6 @@
+/*
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto.Landing;
 
-import com.disnodeteam.dogecv.CameraViewDisplay;
-import com.disnodeteam.dogecv.DogeCV;
-import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -184,3 +182,4 @@ public class scanCorner extends LinearOpMode {
         mecanumDrive.stop();
     }
 }
+*/

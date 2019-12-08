@@ -25,7 +25,8 @@
  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+ *//*
+
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -103,8 +104,10 @@ public class VuforiaTitaniumScarlet extends LinearOpMode {
                 OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
                 telemetry.addData("Pose", format(pose));
 
-                /* We further illustrate how to decompose the pose into useful rotational and
-                 * translational components */
+                */
+/* We further illustrate how to decompose the pose into useful rotational and
+                 * translational components *//*
+
                 if (pose != null) {
                     VectorF trans = pose.getTranslation();
                     Orientation rot = Orientation.getOrientation(pose, AxesReference.EXTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES);
@@ -238,3 +241,4 @@ public class VuforiaTitaniumScarlet extends LinearOpMode {
         return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
     }
 }
+*/

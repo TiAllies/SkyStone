@@ -1,11 +1,10 @@
+/*
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto.Landing;
 
-import com.disnodeteam.dogecv.CameraViewDisplay;
-import com.disnodeteam.dogecv.DogeCV;
-import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.Func;
@@ -20,6 +19,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
 
 import java.util.Locale;
+@Disabled
 @Autonomous (name = "Crater Directive", group = "Autonomous")
 public class primeDirectiveCrater extends LinearOpMode{
     Lift lift;
@@ -217,3 +217,4 @@ public class primeDirectiveCrater extends LinearOpMode{
         mecanumDrive.stop();
     }
 }
+*/

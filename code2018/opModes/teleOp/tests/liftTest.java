@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.tankdrive;
 public class liftTest extends OpMode {
 
     Lift lift;
-    MecanumDrive mecanumDrive;
+    //MecanumDrive mecanumDrive;
     Extension extension;
     armAngle ArmAngle;
 
@@ -38,8 +38,8 @@ public class liftTest extends OpMode {
         lift = new Lift(hardwareMap);
         lift.setZeroLift();
 
-        mecanumDrive = new MecanumDrive(hardwareMap);
-        mecanumDrive.setZeroPowerBehavior();
+        /*mecanumDrive = new MecanumDrive(hardwareMap);
+        mecanumDrive.setZeroPowerBehavior();*/
 
         extension = new Extension(hardwareMap);
         extension.setZeroPowerBehavior();
@@ -102,10 +102,10 @@ public class liftTest extends OpMode {
         }
 
 
-        mecanumDrive.motorLeftBack(LEFTBACK * .9);
+        /*mecanumDrive.motorLeftBack(LEFTBACK * .9);
         mecanumDrive.motorLeftFront(LEFTFRONT * .9);
         mecanumDrive.motorRightBack(RIGHTBACK * .9);
-        mecanumDrive.motorRightFront(RIGHTFRONT * .9);
+        mecanumDrive.motorRightFront(RIGHTFRONT * .9);*/
 
 
 

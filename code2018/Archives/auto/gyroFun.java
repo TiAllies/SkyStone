@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -11,9 +12,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 
+*/
 /**
  * Created by Titanium Allies on 6/10/2018.
- */
+ *//*
+
 @TeleOp(name = "Titanium Gyro", group = "Sensor")
 @Disabled
 public class gyroFun extends LinearOpMode {
@@ -97,3 +100,4 @@ public class gyroFun extends LinearOpMode {
         return String.format("%.3f", rate);
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -9,9 +10,11 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Color
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs.JewelPusher;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Optical_Distance_Sensor;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
+*/
 /**
  * Created by Titanium Allies on 11/10/2017.
- */
+ *//*
+
 @Autonomous(name ="RedAllianceFar",group="Autonomous" )
 @Disabled
 public class redAllianceII extends LinearOpMode{
@@ -74,3 +77,4 @@ public class redAllianceII extends LinearOpMode{
             }
     }
 }}
+*/

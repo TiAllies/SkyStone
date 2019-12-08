@@ -2,152 +2,137 @@ package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Extension;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Grabbing;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Lift;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
-import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.armAngle;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Arm;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claws;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Craw;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Mandible;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccanum;
+
 
 @TeleOp (name = "manualOverride" , group = "TeleOp")
 public class manualOverride extends OpMode{
-    MecanumDrive mecanumDrive;
-    armAngle armAngle;
-    Extension extension;
-   // Grabbing grabbing;
-    Lift lift;
+
+   Meccanum meccanum;
+//   Craw craw;
+//   Arm arm;
+//   Mandible mandible;
 
 
-
-
-    double LEFTFRONT;
-    double RIGHTFRONT;
-    double LEFTBACK;
-    double RIGHTBACK;
-
-    double thetaPower;
-    double gripPower;
-    double grabPower;
-    double grab2Power;
-    double grip2Power;
-    double extendPower;
-    double liftPower;
 
     public void init() {
-        mecanumDrive = new MecanumDrive(hardwareMap);
-        armAngle = new armAngle(hardwareMap);
-        extension = new Extension(hardwareMap);
-     //   grabbing = new Grabbing(hardwareMap);
-        lift = new Lift(hardwareMap);
 
-        mecanumDrive.setZeroPowerBehavior();
-        armAngle.setZeroPowerBehavior();
-        extension.setZeroPowerBehavior();
-    //   grabbing.setZeroPowerBehavior();
-        lift.setZeroLift();
-
+        meccanum = new Meccanum(hardwareMap, telemetry);
+//        craw = new Craw(hardwareMap);
+//        arm = new Arm(hardwareMap);
+//        mandible = new Mandible(hardwareMap);
     }
 
 
     public void loop() {
 
-        //mecanum driving stuff
+        telemetry.addData("right joystick X: ", gamepad1.right_stick_x);
 
-        LEFTFRONT = ((gamepad1.left_stick_y / 3) - (gamepad1.left_stick_x) / 3) - (gamepad1.right_stick_x/1.5);
-        RIGHTFRONT = ((gamepad1.left_stick_y / 3) + (gamepad1.left_stick_x) / 3) + (gamepad1.right_stick_x/1.5);
-        LEFTBACK = ((gamepad1.left_stick_y / 3) + (gamepad1.left_stick_x) / 3) - (gamepad1.right_stick_x/1.5);
-        RIGHTBACK = ((gamepad1.left_stick_y / 3) - (gamepad1.left_stick_x) / 3) + (gamepad1.right_stick_x/1.5);
+        // -------------------------- //
+        // Drivetrain code for moving //
+        // -------------------------- //
+        meccanum.drive(-gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
+
+        // ------------------------- //
+        // Grabber on the end of arm //
+        // ------------------------- //
+       /* if (gamepad2.right_trigger > 0.2){
+            craw.grab(gamepad2.right_trigger);
+        } else if (gamepad2.left_trigger > 0.2) {
+            craw.release(gamepad2.left_trigger);
+        } else { craw.halt(); }*/
 
 
-        if (Math.abs(gamepad1.right_stick_x) < .1) {
-            LEFTFRONT = LEFTFRONT * 3;
-            RIGHTFRONT = RIGHTFRONT * 3;
-            LEFTBACK = LEFTBACK * 3;
-            RIGHTBACK = RIGHTBACK * 3;
+
+
+        // front grabber
+
+        /*if (gamepad2.x){
+            mandible.stoneLevel();
         }
 
-
-        LEFTBACK = Range.clip(LEFTBACK, -1, 1);
-        RIGHTBACK = Range.clip(RIGHTBACK, -1, 1);
-        LEFTFRONT = Range.clip(LEFTFRONT, -1, 1);
-        RIGHTFRONT = Range.clip(RIGHTFRONT, -1, 1);
-
-
-
-        if (gamepad1.left_stick_x > .999) {
-            gamepad1.left_stick_x = 1;
-        }
-        if (gamepad1.left_stick_y > .999) {
-            gamepad1.left_stick_y = 1;
-        }
-        if (gamepad1.right_stick_x > .999) {
-            gamepad1.right_stick_x = 1;
+        if (gamepad2.b) {
+            mandible.foundLevel();
         }
 
-
-        mecanumDrive.motorLeftBack(LEFTBACK);
-        mecanumDrive.motorLeftFront(LEFTFRONT);
-        mecanumDrive.motorRightBack(RIGHTBACK);
-        mecanumDrive.motorRightFront(RIGHTFRONT);
-
-
-
-        // arm angle
-        thetaPower = gamepad2.left_stick_y;
-
-        if(gamepad2.left_stick_y > .999) {
-            gamepad2.left_stick_y = 1;
+        if (gamepad2.y){
+            mandible.up();
         }
 
-        if (gamepad2.left_stick_y != 0) {
-            armAngle.armPower(thetaPower);
-        } else armAngle.stop();
-
-        //setting the angle turning to how far the joystick is pushed
-
-
-
-
-
-
-        //arm extension
-
-        extendPower = gamepad2.right_stick_y;
-
-        if (gamepad2.right_stick_y > .99) {
-            gamepad2.right_stick_y = 1;
-        }
-        if (gamepad2.right_stick_y != 0 ){
-            extension.extendingPower(extendPower);
-        }else extension.stop();
-
-
-
-
-
-        // lift for hanging during endgame
-
-        if (gamepad1.dpad_up){
-            liftPower = -1;
-        } else if (gamepad1.dpad_down){
-            liftPower = 1;
-        } else {
-            liftPower = 0;
-            lift.stop();
-        }
-        lift.lifing(liftPower);
-        /*liftPower = gamepad2.right_stick_y;
-        if (gamepad2.right_stick_y > .99) {
-            gamepad2.right_stick_y = 1;
+        if (gamepad2.left_bumper){
+            mandible.letGo();
         }
 
-            lift.liftingPower(liftPower); */
+        if (gamepad2.right_bumper){
+            mandible.bite();
+        }
+
+        if (gamepad2.right_trigger > 0.2){
+            mandible.biteMore();
+        }
+
+        if (gamepad2.left_stick_y > 0.2) {
+            mandible.opening(gamepad2.left_stick_y);
+        }*/
 
 
 
 
+
+
+
+        //------------//
+        // Arm code   //
+        //------------//
+        /*// getting the powers that will be assigned to the motors of each segment
+        double pow1 = Math.max(Math.abs(gamepad2.left_stick_x), Math.abs(gamepad2.left_stick_y));    // segment 1's motor
+        double pow2 = Math.max(Math.abs(gamepad2.right_stick_x), Math.abs(gamepad2.right_stick_y));  // segment 2's motor
+
+
+        // ------------------------------------------- //
+        // Moving the first segment in the X direction //
+        // ------------------------------------------- //
+        arm.moveSeg1X(gamepad2.left_stick_x, pow1);
+
+
+
+        // ------------------------------------------- //
+        // Moving the first segment in the y direction //
+        // ------------------------------------------- //
+        arm.moveSeg1Y(gamepad2.left_stick_y, pow1);
+
+
+
+        // --------------------------------------------- //
+        // Moving the second segment in the x directions //
+        // --------------------------------------------- //
+        arm.moveSeg2X(gamepad2.right_stick_x, pow2);
+
+
+
+        // --------------------------------------------- //
+        // Moving the second segment in the y directions //
+        // --------------------------------------------- //
+
+        arm.moveSeg2Y(gamepad2.right_stick_y, pow2);
+
+
+
+        // ------------------------------------------------ //
+        // If nothing should be moving, stop the arm motors //
+        // ------------------------------------------------ //
+        if (Math.abs(gamepad2.left_stick_y) < 0.1 && Math.abs(gamepad2.left_stick_x) < 0.1){
+            arm.halt1();
+         }
+
+        if (Math.abs(gamepad2.right_stick_y) < 0.1 && Math.abs(gamepad2.right_stick_x) < 0.1){
+            arm.halt2();
+        }*/
 
 
     }

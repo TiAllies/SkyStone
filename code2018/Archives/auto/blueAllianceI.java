@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -11,9 +12,11 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.Archives.subs.JewelPusher
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Detection.Optical_Distance_Sensor;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 
+*/
 /**
  * Created by Titanium Allies on 11/10/2017.
- */
+ *//*
+
 @Autonomous(name ="BlueAllianceClose",group="Autonomous" )
 @Disabled
 public class blueAllianceI extends LinearOpMode{
@@ -56,7 +59,8 @@ public class blueAllianceI extends LinearOpMode{
                 claw.closeOne();
                 sleep(1000);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 5, 1);
-               /* mecanumDrive.turn(mecanumDrive.RIGHT, 22, .7);
+               */
+/* mecanumDrive.turn(mecanumDrive.RIGHT, 22, .7);
                 mecanumDrive.move(mecanumDrive.FORWARDS,56, 0.6 );
                 claw.close();
                 sleep(500);
@@ -65,7 +69,8 @@ public class blueAllianceI extends LinearOpMode{
                 sleep(500);
                 claw.open();
                 sleep(1000);
-                mecanumDrive.move(mecanumDrive.BACKWARDS, 4, 1);*/
+                mecanumDrive.move(mecanumDrive.BACKWARDS, 4, 1);*//*
+
                 mecanumDrive.stop();
                 sleep(20000);
             }
@@ -86,7 +91,8 @@ public class blueAllianceI extends LinearOpMode{
                 claw.closeOne();
                 sleep(1000);
                 mecanumDrive.move(mecanumDrive.BACKWARDS, 5, 1);
-           /* mecanumDrive.turn(mecanumDrive.RIGHT, 22, .7);
+           */
+/* mecanumDrive.turn(mecanumDrive.RIGHT, 22, .7);
             mecanumDrive.move(mecanumDrive.FORWARDS,56, 0.6 );
             claw.close();
             sleep(500);
@@ -95,7 +101,8 @@ public class blueAllianceI extends LinearOpMode{
             sleep(500);
             claw.open();
             sleep(1000);
-            mecanumDrive.move(mecanumDrive.BACKWARDS, 4, 1);*/
+            mecanumDrive.move(mecanumDrive.BACKWARDS, 4, 1);*//*
+
                 mecanumDrive.stop();
                 sleep(20000);
 
@@ -105,3 +112,4 @@ public class blueAllianceI extends LinearOpMode{
 
         }}
 }
+*/
