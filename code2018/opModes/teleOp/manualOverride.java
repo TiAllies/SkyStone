@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Arm;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claws;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Clutch;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Craw;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Mandible;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccanum;
@@ -16,7 +17,8 @@ public class manualOverride extends OpMode{
    Meccanum meccanum;
 //   Craw craw;
 //   Arm arm;
-//   Mandible mandible;
+   Mandible mandible;
+   Clutch clutch;
 
 
 
@@ -25,7 +27,8 @@ public class manualOverride extends OpMode{
         meccanum = new Meccanum(hardwareMap, telemetry);
 //        craw = new Craw(hardwareMap);
 //        arm = new Arm(hardwareMap);
-//        mandible = new Mandible(hardwareMap);
+        clutch = new Clutch(hardwareMap);
+        mandible = new Mandible(hardwareMap);
     }
 
 
@@ -52,7 +55,7 @@ public class manualOverride extends OpMode{
 
         // front grabber
 
-        /*if (gamepad2.x){
+        if (gamepad2.a){
             mandible.stoneLevel();
         }
 
@@ -76,9 +79,6 @@ public class manualOverride extends OpMode{
             mandible.biteMore();
         }
 
-        if (gamepad2.left_stick_y > 0.2) {
-            mandible.opening(gamepad2.left_stick_y);
-        }*/
 
 
 

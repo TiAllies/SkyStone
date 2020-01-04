@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp.tests;
+
 /* Copyright (c) 2019 FIRST. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -28,6 +29,7 @@ package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp.tests;
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -41,6 +43,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Mandible;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccauto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,42 +86,29 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  */
 
 
-@TeleOp(name="SKYSTONE Vuforia Nav", group ="Concept")
+@Autonomous(name="SKYSTONE Vuforia Nav", group ="Concept")
 public class Skys extends LinearOpMode {
 
-    // IMPORTANT:  For Phone Camera, set 1) the camera source and 2) the orientation, based on how your phone is mounted:
-    // 1) Camera Source.  Valid choices are:  BACK (behind screen) or FRONT (selfie side)
-    // 2) Phone Orientation. Choices are: PHONE_IS_PORTRAIT = true (portrait) or PHONE_IS_PORTRAIT = false (landscape)
-    //
-    // NOTE: If you are running on a CONTROL HUB, with only one USB WebCam, you must select CAMERA_CHOICE = BACK; and PHONE_IS_PORTRAIT = false;
-    //
+    //subs
+    Meccauto meccauto;
+    Mandible mandible;
+
+
+
+
     private static final VuforiaLocalizer.CameraDirection CAMERA_CHOICE = BACK;
     private static final boolean PHONE_IS_PORTRAIT = false  ;
 
-    /*
-     * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
-     * 'parameters.vuforiaLicenseKey' is initialized is for illustration only, and will not function.
-     * A Vuforia 'Development' license key, can be obtained free of charge from the Vuforia developer
-     * web site at https://developer.vuforia.com/license-manager.
-     *
-     * Vuforia license keys are always 380 characters long, and look as if they contain mostly
-     * random data. As an example, here is a example of a fragment of a valid key:
-     *      ... yIgIzTqZ4mWjk9wd3cZO9T1axEqzuhxoGlfOOI2dRzKS4T0hQ8kT ...
-     * Once you've obtained a license key, copy the string from the Vuforia web site
-     * and paste it in to your code on the next line, between the double quotes.
-     */
+
     private static final String VUFORIA_KEY =
             "AUHnteP/////AAAAGQiEoKkU5kbNrzEFIAPesbUo+3LDrufWcf8pZMP0MpLubYXJSK9jpf0GtOI1LSPKs4pLKXT0RsnVUWO9rnz8mF3eH/sE7jPe/iCcT/lkynWC/rvX+QN00uZiuSBDOBUDEw01Y9o6qjET3SUNSH7m7lcoiJcqKGX7/dX58vpTwYFJhGPjtBzHH0tL9SIiEPl/NY2G8j5NI6buI6FB4zoFpNpWmEqOJR4ru+slpI2nxD/+NG6AKzHNOAJN50rH4mMHwIefq9PFfCOF3jhYq7NN7TuJY9yg/DvxmyVF9cAKB7kZeoSv3/LwD9GtZqONzeprxnwwpvKjAkCWGgww6BnZv+ZD7oKtu1znbHuLrKHqmVd1";
 
-    // Since ImageTarget trackables use mm to specifiy their dimensions, we must use mm for all the physical dimension.
-    // We will define some constants and conversions here
+
     private static final float mmPerInch        = 25.4f;
     private static final float mmTargetHeight   = (6) * mmPerInch;          // the height of the center of the target image above the floor
 
     // Constant for Stone Target
     private static final float stoneZ = 2.00f * mmPerInch;
-
-    // Constants for the center support targets
 
     // Constants for perimeter targets
     private static final float halfField = 72 * mmPerInch;
@@ -131,12 +122,12 @@ public class Skys extends LinearOpMode {
     private float phoneYRotate    = 0;
     private float phoneZRotate    = 0;
 
+
     @Override public void runOpMode() {
-        /*
-         * Configure Vuforia by creating a Parameter object, and passing it to the Vuforia engine.
-         * We can pass Vuforia the handle to a camera preview resource (on the RC phone);
-         * If no camera monitor is desired, use the parameter-less constructor instead (commented out below).
-         */
+
+        meccauto = new Meccauto(hardwareMap, telemetry);
+        mandible = new Mandible(hardwareMap);
+
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
@@ -145,17 +136,13 @@ public class Skys extends LinearOpMode {
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection   = CAMERA_CHOICE;
 
-        //  Instantiate the Vuforia engine
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
-        // Load the data sets for the trackable objects. These particular data
-        // sets are stored in the 'assets' part of our application.
         VuforiaTrackables targetsSkyStone = this.vuforia.loadTrackablesFromAsset("Skystone");
 
         VuforiaTrackable stoneTarget = targetsSkyStone.get(0);
         stoneTarget.setName("Stone Target");
 
-        // For convenience, gather together all the trackable objects in one easily-iterable collection */
         List<VuforiaTrackable> allTrackables = new ArrayList<VuforiaTrackable>();
         allTrackables.add(stoneTarget);
 
@@ -177,18 +164,10 @@ public class Skys extends LinearOpMode {
          *  coordinate system (the center of the field), facing up.
          */
 
-        // Set the position of the Stone Target.  Since it's not fixed in position, assume it's at the field origin.
-        // Rotated it to to face forward, and raised it to sit on the ground correctly.
-        // This can be used for generic target-centric approach algorithms
+
         stoneTarget.setLocation(OpenGLMatrix
                 .translation(0, 0, stoneZ)
                 .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));
-
-        //Set the position of the bridge support targets with relation to origin (center of field)
-
-
-
-
 
         // We need to rotate the camera around it's long axis to bring the correct camera forward.
         if (CAMERA_CHOICE == BACK) {
@@ -217,17 +196,10 @@ public class Skys extends LinearOpMode {
             ((VuforiaTrackableDefaultListener) trackable.getListener()).setPhoneInformation(robotFromCamera, parameters.cameraDirection);
         }
 
-        // WARNING:
-        // In this sample, we do not wait for PLAY to be pressed.  Target Tracking is started immediately when INIT is pressed.
-        // This sequence is used to enable the new remote DS Camera Preview feature to be used with this sample.
-        // CONSEQUENTLY do not put any driving commands in this loop.
-        // To restore the normal opmode structure, just un-comment the following line:
 
          waitForStart();
-
-        // Note: To use the remote camera preview:
-        // AFTER you hit Init on the Driver Station, use the "options menu" to select "Camera Stream"
-        // Tap the preview window to receive a fresh image.
+        meccauto.move(Meccauto.BACKWARDS, 20, .7);
+        meccauto.turn(Meccauto.LEFT, 5, .8);
 
         targetsSkyStone.activate();
         while (opModeIsActive()) {
@@ -249,7 +221,7 @@ public class Skys extends LinearOpMode {
                 }
             }
 
-            // Provide feedback as to where the robot is located (if we know).
+
             if (targetVisible) {
                 // express position (translation) of robot in inches.
                 VectorF translation = lastLocation.getTranslation();
@@ -260,14 +232,45 @@ public class Skys extends LinearOpMode {
                 Orientation rotation = Orientation.getOrientation(lastLocation, EXTRINSIC, XYZ, DEGREES);
                 telemetry.addData("Rot (deg)", "{Roll, Pitch, Heading} = %.0f, %.0f, %.0f", rotation.firstAngle, rotation.secondAngle, rotation.thirdAngle);
 
-                if ((translation.get(1)/mmPerInch)< -1){
+                if ((translation.get(1)/mmPerInch)> 3.5){
                     telemetry.addData("Stone", 3);
-                    //strafe left
-                } else if ((translation.get(1)/mmPerInch) >= -1 && (translation.get(1)/mmPerInch)<= 1){
-                    telemetry.addData("Strone", 2);
-                } else if ((translation.get(1)/mmPerInch)> 1){
+                    // stone position 3 (left of robot)
+                    /*meccauto.side(Meccauto.RIGHT, 10, .8);
+                    sleep(500);
+                    mandible.stoneLevel();
+                    sleep(500);
+                    meccauto.move(Meccauto.BACKWARDS, 20, .6);
+                    sleep(500);
+                    mandible.biteMore();
+                    sleep(30000);*/
+
+
+                } else if ((translation.get(1)/mmPerInch) >= 1 && (translation.get(1)/mmPerInch)<= 3.3){
+                    telemetry.addData("Stone", 2);
+                    // stone position 2 (middle)
+                    /*meccauto.side(Meccauto.LEFT, 9, .8);
+                    sleep(500);
+                    mandible.stoneLevel();
+                    sleep(500);
+                    meccauto.move(Meccauto.BACKWARDS, 20, .6);
+                    sleep(500);
+                    mandible.biteMore();
+                    sleep(30000);*/
+
+
+                } else if ((translation.get(1)/mmPerInch)< 1){
                     telemetry.addData("Stone", 1);
-                    // strafe right
+                    // stone position 1 (right of robot)
+                    /*meccauto.side(Meccauto.LEFT, 15, .8);
+                    sleep(500);
+                    mandible.stoneLevel();
+                    sleep(500);
+                    meccauto.move(Meccauto.BACKWARDS, 20, .6);
+                    sleep(500);
+                    mandible.biteMore();
+                    sleep(30000);*/
+
+
                 }
 
             }

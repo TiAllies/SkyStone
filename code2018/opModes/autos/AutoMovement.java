@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claw;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claws;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Mandible;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.MecanumDrive;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccanum;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccauto;
@@ -13,11 +14,11 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccauto;
 public class AutoMovement extends LinearOpMode {
 
     Meccauto meccauto;
-    Claws claws;
+    Mandible mandible;
 
     public void initialize () {
         meccauto = new Meccauto(hardwareMap, telemetry);
-        claws = new Claws(hardwareMap);
+        mandible = new Mandible(hardwareMap);
 
     }
 
@@ -35,7 +36,7 @@ public class AutoMovement extends LinearOpMode {
         // --------------------------------------------------- //
         // Grabs and moves the foundation into scorable range  //
         // --------------------------------------------------- //
-        meccauto.move(Meccauto.FORWARDS,20,.7);
+        meccauto.turn(Meccauto.RIGHT,15,.7);
       /*  meccauto.move(Meccauto.FORWARDS, 30, .7);
         claws.autoRelease();
 
