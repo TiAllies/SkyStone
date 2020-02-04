@@ -18,7 +18,10 @@ public class manualOverride extends OpMode{
 //   Craw craw;
 //   Arm arm;
    Mandible mandible;
-   Clutch clutch;
+//   Clutch clutch;
+
+    double thing = 0;
+    boolean check = false;
 
 
 
@@ -27,19 +30,21 @@ public class manualOverride extends OpMode{
         meccanum = new Meccanum(hardwareMap, telemetry);
 //        craw = new Craw(hardwareMap);
 //        arm = new Arm(hardwareMap);
-        clutch = new Clutch(hardwareMap);
+//        clutch = new Clutch(hardwareMap);
         mandible = new Mandible(hardwareMap);
+
     }
 
 
     public void loop() {
 
         telemetry.addData("right joystick X: ", gamepad1.right_stick_x);
+        telemetry.addData("Jaw Height", thing);
 
         // -------------------------- //
         // Drivetrain code for moving //
         // -------------------------- //
-        meccanum.drive(-gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
+        meccanum.drive(-gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
 
         // ------------------------- //
         // Grabber on the end of arm //
@@ -54,31 +59,45 @@ public class manualOverride extends OpMode{
 
 
         // front grabber
+        if (gamepad1.dpad_down && !check){
+            thing += 0.05;
+            check = true;
+        }
+        if (gamepad1.dpad_up && !check){
+            thing -= 0.05;
+            check = true;
+        }
+        if (!gamepad1.dpad_down && !gamepad1.dpad_up){
+            check = false;
+        }
+        if (check) {
+            mandible.testPosition(thing);
+        }
 
-        if (gamepad2.a){
+
+        if (gamepad1.a){
             mandible.stoneLevel();
         }
 
-        if (gamepad2.b) {
+        if (gamepad1.b) {
             mandible.foundLevel();
         }
 
-        if (gamepad2.y){
+        if (gamepad1.y){
             mandible.up();
         }
 
-        if (gamepad2.left_bumper){
+        if (gamepad1.left_bumper){
             mandible.letGo();
         }
 
-        if (gamepad2.right_bumper){
+        if (gamepad1.right_bumper){
             mandible.bite();
         }
 
-        if (gamepad2.right_trigger > 0.2){
+        if (gamepad1.right_trigger > 0.2){
             mandible.biteMore();
         }
-
 
 
 

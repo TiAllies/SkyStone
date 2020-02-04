@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos.redAllianc
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claws;
@@ -9,6 +10,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Mandible;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccauto;
 
 @Autonomous (name = "Red: Stones", group = "Autonomous")
+@Disabled
 public class StoneObtain extends LinearOpMode {
         Meccauto meccauto;
         Mandible mandible;

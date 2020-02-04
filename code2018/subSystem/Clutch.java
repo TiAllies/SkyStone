@@ -44,7 +44,7 @@ public class Clutch {
 
 
     // ---------------------------------------------------------------------------------- //
-    // Reset/Start positions for clutch boxes 1 through 8 | mm away from the touch sensor //
+    // Reset/Start  & current positions for clutch boxes 1 through 8 | mm away from the touch sensor //
     // ---------------------------------------------------------------------------------- //
     int startUn = 1;
     int startDeux = 2;
@@ -54,6 +54,15 @@ public class Clutch {
     int startSix = 6;
     int startSept = 7;
     int startHuit = 8;
+
+    int currUn = 1;
+    int currDeux = 2;
+    int currTrois = 3;
+    int currQuatre = 4;
+    int currCinq = 5;
+    int currSix = 6;
+    int currSept = 7;
+    int currHuit = 8;
 
 
     // --------------------------------------------------------------------- //
@@ -70,6 +79,10 @@ public class Clutch {
     private int reset[] = {startUn, startDeux, startTrois, startQuatre, startCinq, startSix, startSept, startHuit};
     private int startTop[] = {startTrois, startQuatre, startSept, startHuit};
     private int startBottom[] = {startUn, startDeux, startCinq, startSix};
+
+    private int curr[] = {currUn, currDeux, currTrois, currQuatre, currCinq, currSix, currSept, currHuit};
+    private int topCurr[] = {currTrois, currQuatre, currSept, currHuit};
+    private int bottomCurr[] = {currUn, currDeux, currCinq, currSix};
 
 
     // ----------------------------------------------------------------------------------- //
@@ -89,6 +102,9 @@ public class Clutch {
     // initializational stuff for in the classes and config file stuff //
     // --------------------------------------------------------------- //
     public Clutch (HardwareMap hardwareMap){
+        /*clutch = {
+                hardwareMap.servo.get("Clutch1"),
+        }*/
         clutchUn = hardwareMap.servo.get("Clutch1");
         clutchDeux = hardwareMap.servo.get("Clutch2");
         clutchTrois = hardwareMap.servo.get("Clutch3");
@@ -111,14 +127,7 @@ public class Clutch {
         senseHuit = hardwareMap.touchSensor.get("Sense8");
 
         // ************ INIT STATE ************ //
-        clutchUn.setPosition(NEUTRAL);
-        clutchDeux.setPosition(NEUTRAL);
-        clutchTrois.setPosition(NEUTRAL);
-        clutchQuatre.setPosition(NEUTRAL);
-        clutchCinq.setPosition(NEUTRAL);
-        clutchSix.setPosition(NEUTRAL);
-        clutchSept.setPosition(NEUTRAL);
-        clutchHuit.setPosition(NEUTRAL);
+        servoSetting(NEUTRAL);
 
         setMotorMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -129,14 +138,9 @@ public class Clutch {
     // Method for setting the position of all clutch servos //
     // ---------------------------------------------------- //
     private void servoSetting (double position){
-        clutch[0].setPosition(position);
-        clutch[1].setPosition(position);
-        clutch[2].setPosition(position);
-        clutch[3].setPosition(position);
-        clutch[4].setPosition(position);
-        clutch[5].setPosition(position);
-        clutch[6].setPosition(position);
-        clutch[7].setPosition(position);
+        for (int i = 0; i < 8 ; i++){
+            clutch[i].setPosition(position);
+        }
     }
 
     // ------------------------------------------ //

@@ -151,7 +151,6 @@ public class Meccanum{
         }
 
 
-
         if (hypo < .05) {
             hypoPow = 0;
         } else{
@@ -159,7 +158,7 @@ public class Meccanum{
         }
         double maxPow = Math.max(Math.max(Math.abs(leftFront), Math.abs(rightFront)), Math.max(Math.abs(leftBack), Math.abs(rightBack)));
         double powScale = Math.max(hypoPow, Math.abs(turnpow));
-        if(maxPow < .1)
+        if(Math.abs(maxPow) < .1)
         {
             leftFront = 0.0;
             rightFront = 0.0;

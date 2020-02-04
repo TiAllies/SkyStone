@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp.tests;
+package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos.redAlliance;
 
 /* Copyright (c) 2019 FIRST. All rights reserved.
  *
@@ -29,13 +29,12 @@ package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.teleOp.tests;
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import android.text.method.BaseKeyListener;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.matrices.VectorF;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
@@ -86,8 +85,8 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  */
 
 
-@Autonomous(name="SKYSTONE Vuforia Nav", group ="Concept")
-public class Skys extends LinearOpMode {
+@Autonomous(name="Scanner: Red|Vertical", group ="Autonomous")
+public class RedDetectedPulled extends LinearOpMode {
 
     //subs
     Meccauto meccauto;
@@ -198,8 +197,10 @@ public class Skys extends LinearOpMode {
 
 
          waitForStart();
-        meccauto.move(Meccauto.BACKWARDS, 20, .7);
-        meccauto.turn(Meccauto.LEFT, 5, .8);
+        meccauto.move(Meccauto.FORWARDS, 22, 1);
+        meccauto.turn(Meccauto.RIGHT, 2, 1);
+        meccauto.side(Meccauto.LEFT, 8, 1);
+
 
         targetsSkyStone.activate();
         while (opModeIsActive()) {
@@ -222,6 +223,7 @@ public class Skys extends LinearOpMode {
             }
 
 
+
             if (targetVisible) {
                 // express position (translation) of robot in inches.
                 VectorF translation = lastLocation.getTranslation();
@@ -232,51 +234,104 @@ public class Skys extends LinearOpMode {
                 Orientation rotation = Orientation.getOrientation(lastLocation, EXTRINSIC, XYZ, DEGREES);
                 telemetry.addData("Rot (deg)", "{Roll, Pitch, Heading} = %.0f, %.0f, %.0f", rotation.firstAngle, rotation.secondAngle, rotation.thirdAngle);
 
-                if ((translation.get(1)/mmPerInch)> 3.5){
+
+                if ((translation.get(1)/mmPerInch) >= 6){
                     telemetry.addData("Stone", 3);
                     // stone position 3 (left of robot)
-                    /*meccauto.side(Meccauto.RIGHT, 10, .8);
-                    sleep(500);
+                    meccauto.side(Meccauto.LEFT, 3, 1);
+                    sleep(2000);
                     mandible.stoneLevel();
-                    sleep(500);
-                    meccauto.move(Meccauto.BACKWARDS, 20, .6);
-                    sleep(500);
+                    mandible.openWide();
+                    sleep(1000);
+                    meccauto.move(Meccauto.FORWARDS, 12, .5);
                     mandible.biteMore();
-                    sleep(30000);*/
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS, 6, 1);
+                    sleep(100);
+                    meccauto.turn(Meccauto.RIGHT, 30, 1);
+                    sleep(2000);
+                    mandible.foundLevel();
+                    meccauto.move(Meccauto.FORWARDS, 35, 1);
+                    meccauto.turn(Meccauto.RIGHT, 3, 1);
+                    meccauto.move(Meccauto.FORWARDS, 20, 1);
+                    meccauto.turn(Meccauto.RIGHT, 5, 1);
+                    sleep(100);
+                    meccauto.side(Meccauto.LEFT, 5, 1);
+                    meccauto.move(Meccauto.FORWARDS, 11, 1);
+                    mandible.letGo();
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS, 15, 1);
+                    meccauto.side(Meccauto.RIGHT, 5, 1);
+                    meccauto.move(Meccauto.BACKWARDS, 12, 1);
+                    sleep(500000);
 
-
-                } else if ((translation.get(1)/mmPerInch) >= 1 && (translation.get(1)/mmPerInch)<= 3.3){
+                } else if ((translation.get(1)/mmPerInch) < 6 && (translation.get(1)/mmPerInch) > -2){
                     telemetry.addData("Stone", 2);
-                    // stone position 2 (middle)
-                    /*meccauto.side(Meccauto.LEFT, 9, .8);
-                    sleep(500);
+                    // stone position 2 (middle, still a bit to the right of robot)
+                    meccauto.side(Meccauto.RIGHT, 13, 1);
+                    meccauto.turn(Meccauto.RIGHT, 2, 1);
+                    sleep(2000);
                     mandible.stoneLevel();
-                    sleep(500);
-                    meccauto.move(Meccauto.BACKWARDS, 20, .6);
-                    sleep(500);
+                    mandible.openWide();
+                    sleep(1000);
+                    meccauto.move(Meccauto.FORWARDS,14,.3);
                     mandible.biteMore();
-                    sleep(30000);*/
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS, 7, 1);
+                    sleep(100);
+                    meccauto.turn(Meccauto.RIGHT, 31, 1);
+                    sleep(2000);
+                    mandible.foundLevel();
+                    meccauto.move(Meccauto.FORWARDS, 40, .7);
+                    meccauto.turn(Meccauto.RIGHT, 6, 1);
+                    meccauto.move(Meccauto.FORWARDS, 25, 1);
+                    meccauto.turn(Meccauto.RIGHT, 3, 1);
+                    sleep(100);
+                    meccauto.side(Meccauto.LEFT, 4, 1);
+                    meccauto.move(Meccauto.FORWARDS, 12, 1);
+                    mandible.letGo();
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS, 10, 1);
+                    meccauto.side(Meccauto.RIGHT, 7, 1);
+                    meccauto.move(Meccauto.BACKWARDS, 15, 1);
+                    sleep(500000);
 
-
-                } else if ((translation.get(1)/mmPerInch)< 1){
+                } else if ((translation.get(1)/mmPerInch) <= -2){
                     telemetry.addData("Stone", 1);
-                    // stone position 1 (right of robot)
-                    /*meccauto.side(Meccauto.LEFT, 15, .8);
-                    sleep(500);
+                    // stone position 1 (left of robot)
+                    meccauto.side(Meccauto.RIGHT, 26, 1);
+                    meccauto.turn(Meccauto.RIGHT, 4, 1);
+                    sleep(2000);
                     mandible.stoneLevel();
-                    sleep(500);
-                    meccauto.move(Meccauto.BACKWARDS, 20, .6);
-                    sleep(500);
+                    mandible.openWide();
+                    sleep(1000);
+                    meccauto.move(Meccauto.FORWARDS,15,.4);
                     mandible.biteMore();
-                    sleep(30000);*/
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS, 7, 1);
+                    meccauto.turn(Meccauto.RIGHT, 31, 1);
+                    sleep(2000);
+                    mandible.foundLevel();
+                    meccauto.move(Meccauto.FORWARDS, 40, .7);
+                    meccauto.turn(Meccauto.RIGHT, 5, 1);
+                    meccauto.move(Meccauto.FORWARDS, 35, 1);
+                    meccauto.turn(Meccauto.RIGHT, 8, 1);
+                    sleep(100);
+                    meccauto.side(Meccauto.LEFT, 6, 1);
+                    meccauto.move(Meccauto.FORWARDS, 6, 1);
+                    mandible.letGo();
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS, 15, 1);
+                    meccauto.side(Meccauto.RIGHT, 3, 1);
+                    meccauto.move(Meccauto.BACKWARDS, 10, 1);
+                    sleep(500000);
+
 
 
                 }
 
             }
-            else {
-                telemetry.addData("Visible Target", "none");
-            }
+
             telemetry.update();
         }
         // Disable Tracking when we are done;

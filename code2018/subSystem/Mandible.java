@@ -12,15 +12,17 @@ public class Mandible {
     double foundation = 0.45;
     double stone = 0.75;
 
-    double jInit2 = 0.2;
-    double foundation2 = 0.42;
-    double stone2 = 1;
+    double jInit2 = 0.33;
+    double foundation2 = 0.65;
+    double transport = 0.54;
+    double stone2 = 0.85;
 
 
     double fInit = 0.8;
     double open = 0.8;
+    double wide = 0.93;
     double close = 0.4;
-    double closeMore = 0.25;
+    double closeMore = 0.18;
 
     public Mandible (HardwareMap hardwareMap){
 //        leftJaw = hardwareMap.servo.get("LeftJaw");
@@ -45,6 +47,8 @@ public class Mandible {
         fang.setPosition(closeMore);
     }
 
+    public void openWide () { fang.setPosition(wide);}
+
 
     public void foundLevel () {
 //        leftJaw.setPosition(foundation);
@@ -56,9 +60,19 @@ public class Mandible {
         rightJaw.setPosition(stone2);
     }
 
+    public void transporting () {
+        rightJaw.setPosition(transport);
+    }
+
+
+
     public void up () {
 //        leftJaw.setPosition(jInit);
         rightJaw.setPosition(jInit2);
+    }
+
+    public void testPosition (double position) {
+        rightJaw.setPosition(position);
     }
 
 
