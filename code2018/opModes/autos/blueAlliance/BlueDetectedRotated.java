@@ -83,7 +83,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  */
 
 
-@Autonomous(name="Scanner: Blue|Horizontal", group ="Autonomous")
+@Autonomous(name="Stones: Blue 2-vert (test)", group ="Autonomous")
 public class BlueDetectedRotated extends LinearOpMode {
 
     //subs
@@ -195,7 +195,9 @@ public class BlueDetectedRotated extends LinearOpMode {
 
 
          waitForStart();
-        meccauto.move(Meccauto.BACKWARDS, 28, .6);
+        meccauto.move(Meccauto.FORWARDS, 22, .8);
+        meccauto.turn(Meccauto.RIGHT, 5, 1);
+        meccauto.move(Meccauto.FORWARDS, 2, 1);
 
 
         targetsSkyStone.activate();
@@ -230,34 +232,71 @@ public class BlueDetectedRotated extends LinearOpMode {
                 Orientation rotation = Orientation.getOrientation(lastLocation, EXTRINSIC, XYZ, DEGREES);
                 telemetry.addData("Rot (deg)", "{Roll, Pitch, Heading} = %.0f, %.0f, %.0f", rotation.firstAngle, rotation.secondAngle, rotation.thirdAngle);
 
-                sleep(1000);
+
 
                 if ((translation.get(1)/mmPerInch) < 2){
                     telemetry.addData("Stone", 3);
                     // stone position 3 (right of robot)
-                    meccauto.turn(Meccauto.LEFT, 15, .7);
-                    sleep(50000);
-                    /*mandible.stoneLevel();
-                    sleep(500);
-                    meccauto.move(Meccauto.BACKWARDS, 12, .5);
-                    sleep(500);
-                    mandible.bite();
-                    sleep(30000);
-                    meccauto.move(Meccauto.FORWARDS, 8, .8);
-                    sleep(100);
-                    meccauto.turn(Meccauto.LEFT, 30, .8);
-                    mandible.foundLevel();
-                    sleep(300);
-                    meccauto.move(Meccauto.BACKWARDS, 60, .8);
-                    mandible.letGo();
-                    sleep(200);
-                    //different return amounts to go for the stones of the same route
-                    meccauto.move(Meccauto.FORWARDS, 55, .8);
-                    meccauto.turn(Meccauto.RIGHT, 35, .8);
+                    meccauto.side(Meccauto.RIGHT, 18, .6);
                     mandible.stoneLevel();
-                    meccauto.move(Meccauto.BACKWARDS, 12, .5);
+                    sleep(200);
+                    meccauto.move(Meccauto.FORWARDS, 14, .5);
                     mandible.biteMore();
-                    meccauto.move(Meccauto.FORWARDS, 12, .5);
+                    sleep(300);
+                    mandible.foundLevel();
+                    sleep(100);
+                    meccauto.move(Meccauto.BACKWARDS, 5, 1);
+                    meccauto.turn(Meccauto.LEFT, 27, 1);
+                    sleep(1000);
+                    meccauto.move(Meccauto.FORWARDS, 65, .8);
+                    meccauto.turn(Meccauto.RIGHT, 9, 1);
+                    meccauto.move(Meccauto.FORWARDS, 5, 1);
+                    mandible.letGo();
+                    sleep(50);
+                    meccauto.turn(Meccauto.RIGHT, 3, 1);
+                    sleep(100);
+                    meccauto.move(Meccauto.BACKWARDS, 108, 1);
+                    sleep(100);
+                    meccauto.turn(Meccauto.RIGHT, 27, 1);
+                    meccauto.move(Meccauto.BACKWARDS, 6, 1);
+                    mandible.stoneLevel();
+                    sleep(300);
+                    meccauto.move(Meccauto.FORWARDS, 15, .5);
+                    mandible.biteMore();
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS,9, 1);
+                    sleep(100);
+                    meccauto.turn(Meccauto.LEFT, 27, 1);
+                    sleep(100);
+                    mandible.foundLevel();
+                    meccauto.move(Meccauto.FORWARDS, 70, 1);
+                    meccauto.turn(Meccauto.RIGHT, 3, 1);
+                    sleep(200);
+                    meccauto.side(Meccauto.LEFT, 4, 1);
+                    meccauto.move(Meccauto.FORWARDS, 32, .8);
+                    meccauto.turn(Meccauto.RIGHT,4, 1);
+                    mandible.letGo();
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS, 27, 1);
+                    /*meccauto.turn(Meccauto.RIGHT, 25, 1);
+                    meccauto.move(Meccauto.BACKWARDS, 10, 1);
+                    mandible.stoneLevel();
+                    meccauto.side(Meccauto.LEFT, 8, 1);
+                    sleep(100);
+                    meccauto.move(Meccauto.FORWARDS, 18, .5);
+                    mandible.biteMore();*/
+                    /*
+                    //first stone delivered
+                    //different return amounts to go for the stones of the same route
+                    meccauto.move(Meccauto.FORWARDS, 107, .5);
+                    meccauto.turn(Meccauto.RIGHT, 35, .8);
+                    meccauto.move(Meccauto.FORWARDS, 3, 1);
+                    mandible.stoneLevel();
+                    sleep(300);
+                    meccauto.move(Meccauto.BACKWARDS, 11, .5);
+                    mandible.biteMore();*/
+                    sleep(200000);
+                    /*meccauto.move(Meccauto.FORWARDS, 12, .5);
                     meccauto.turn(Meccauto.LEFT, 35, .8);
                     meccauto.move(Meccauto.BACKWARDS, 55, .8);
                     mandible.letGo();
@@ -266,64 +305,102 @@ public class BlueDetectedRotated extends LinearOpMode {
                     sleep(500000);*/
 
 
-                } else if ((translation.get(1)/mmPerInch) > 2){
+                } else if ((translation.get(1)/mmPerInch) > 2 && (translation.get(1)/mmPerInch) < 4.4){
                     telemetry.addData("Stone", 2);
                     // stone position 2 (middle, still a bit to the right of robot)
-                    meccauto.turn(Meccauto.LEFT, 8, .7);
-                    sleep(50000);
-                    /*mandible.stoneLevel();
-                    sleep(500);
-                    meccauto.move(Meccauto.BACKWARDS, 12, .5);
-                    sleep(500);
-                    mandible.bite();
-                    sleep(30000);
-                    meccauto.move(Meccauto.FORWARDS, 8, .8);
-                    sleep(100);
-                    meccauto.turn(Meccauto.LEFT, 30, .8);
-                    mandible.foundLevel();
-                    sleep(300);
-                    meccauto.move(Meccauto.BACKWARDS, 60, .8);
-                    mandible.letGo();
-                    sleep(200);
-                    //different return amounts to go for the stones of the same route
-                    meccauto.move(Meccauto.FORWARDS, 65, .8);
-                    meccauto.turn(Meccauto.RIGHT, 35, .8);
+                    meccauto.side(Meccauto.RIGHT, 9, .7);
                     mandible.stoneLevel();
-                    meccauto.move(Meccauto.BACKWARDS, 12, .5);
+                    sleep(200);
+                    meccauto.move(Meccauto.FORWARDS, 13, .5);
                     mandible.biteMore();
-                    meccauto.move(Meccauto.FORWARDS, 12, .8);
-                    meccauto.turn(Meccauto.LEFT, 35, .8);
+                    sleep(200);
+                    meccauto.move(Meccauto.BACKWARDS, 10, 1);
+                    sleep(100);
+                    meccauto.turn(Meccauto.LEFT, 27, 1);
                     mandible.foundLevel();
-                    meccauto.move(Meccauto.BACKWARDS, 65, .7);
+                    sleep(100);
+                    meccauto.move(Meccauto.FORWARDS, 70, 1);
+                    meccauto.turn(Meccauto.RIGHT, 4, 1);
+                    meccauto.move(Meccauto.FORWARDS, 5, 1);
+                    sleep(50);
                     mandible.letGo();
-                    sleep(300);
-                    meccauto.move(Meccauto.FORWARDS, 28, 1);
+                    sleep(100);
+                    meccauto.move(Meccauto.BACKWARDS, 15, 1);
+                    sleep(50);
+                    meccauto.side(Meccauto.RIGHT, 5, 1);
+                    meccauto.move(Meccauto.BACKWARDS, 15, 1);
+/*                    sleep(50);
+                    meccauto.turn(Meccauto.RIGHT, 30, 1);
+                    mandible.stoneLevel();
+                    meccauto.move(Meccauto.BACKWARDS, 9, 1);
+                    sleep(100);
+                    meccauto.move(Meccauto.FORWARDS, 18, .5);
+                    mandible.biteMore();*/
+                    /*sleep(50);
+                    mandible.stoneLevel();
+                    meccauto.side(Meccauto.RIGHT, 5, 1);
+                    meccauto.turn(Meccauto.RIGHT, 27, 1);
+                    sleep(50);
+                    meccauto.side(Meccauto.LEFT, 4, 1);
+                    meccauto.move(Meccauto.FORWARDS, 11, .5);
+                    mandible.biteMore();
+                    sleep(100);
+                    meccauto.side(Meccauto.RIGHT, 7, 1);
+                    sleep(50);
+                    meccauto.move(Meccauto.BACKWARDS, 15, 1);
+                    sleep(50);
+                    meccauto.turn(Meccauto.LEFT, 30, 1);
+                    sleep(50);
+                    mandible.foundLevel();
+                    meccauto.move(Meccauto.FORWARDS, 100, 1);
+                    meccauto.turn(Meccauto.RIGHT, 5, 1);
+                    meccauto.move(Meccauto.FORWARDS, 8, 1);
+                    mandible.letGo();
+                    sleep(100);
+                    meccauto.move(Meccauto.BACKWARDS, 50, .5);*/
                     sleep(500000);
-                    */
 
 
-                } else if (getRuntime() == 10){
+                } else if ((translation.get(1)/mmPerInch)> 4.4){
                     telemetry.addData("Stone", 1);
                     // stone position 1 (left of robot)
-                    meccauto.turn(Meccauto.RIGHT, 4,.5);
-                    sleep(50000);
-                    /*mandible.stoneLevel();
-                    sleep(500);
-                    meccauto.move(Meccauto.BACKWARDS, 12, .5);
-                    sleep(500);
-                    mandible.biteMore();
-                    sleep(5000);
-                    meccauto.move(Meccauto.FORWARDS, 12, .8);
-                    sleep(100);
-                    meccauto.turn(Meccauto.LEFT, 34, .8);
-                    mandible.foundLevel();
-                    sleep(300);
-                    meccauto.move(Meccauto.BACKWARDS, 60, .8);
-                    mandible.letGo();
+                    meccauto.side(Meccauto.LEFT, 5,.7);
+                    mandible.stoneLevel();
                     sleep(200);
+                    meccauto.move(Meccauto.FORWARDS, 18, .5);
+                    mandible.biteMore();
+                    sleep(200);
+                    meccauto.move(Meccauto.BACKWARDS, 11, 1);
+                    meccauto.turn(Meccauto.LEFT, 30, 1);
+                    sleep(100);
+                    mandible.foundLevel();
+                    meccauto.move(Meccauto.FORWARDS, 85, 1);
+                    meccauto.turn(Meccauto.RIGHT, 9, 1);
+                    meccauto.move(Meccauto.FORWARDS, 8, 1);
+                    mandible.letGo();
+                    sleep(50);
+                    meccauto.move(Meccauto.BACKWARDS, 35, 1);
+/*                    sleep(1000);
+
+// back 95in
+                    mandible.stoneLevel();
+                    meccauto.turn(Meccauto.LEFT, 63, 1);
+                    sleep(1000);
+                    meccauto.side(Meccauto.RIGHT, 36, 1);
+                    sleep(1000);
+                    meccauto.move(Meccauto.FORWARDS, 10, 1);
+                    sleep(1000);
+                    mandible.biteMore();*/
+                    /*
+                    //first stone delivered
                     //different return amounts to go for the stones of the same route
-                    meccauto.move(Meccauto.FORWARDS, 70, .8);
-                    meccauto.turn(Meccauto.RIGHT, 40, .8);
+                    meccauto.move(Meccauto.FORWARDS, 100, .7);
+                    mandible.stoneLevel();
+                    meccauto.turn(Meccauto.LEFT, 67, 1);
+                    meccauto.move(Meccauto.BACKWARDS, 4, .6);
+                    mandible.biteMore();*/
+                    sleep(200000);
+                    /*meccauto.turn(Meccauto.RIGHT, 40, .8);
                     meccauto.move(Meccauto.BACKWARDS, 15, .4);
                     mandible.biteMore();
                     sleep(500);
@@ -345,4 +422,3 @@ public class BlueDetectedRotated extends LinearOpMode {
         targetsSkyStone.deactivate();
     }
 }
-

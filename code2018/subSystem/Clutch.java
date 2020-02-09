@@ -19,8 +19,6 @@ public class Clutch {
     private Servo clutchQuatre;
     private Servo clutchCinq;
     private Servo clutchSix;
-    private Servo clutchSept;
-    private Servo clutchHuit;
 
     private DcMotor topSect;
     private DcMotor bottomSect;
@@ -31,8 +29,6 @@ public class Clutch {
     private TouchSensor senseQuatre;
     private TouchSensor senseCinq;
     private TouchSensor senseSix;
-    private TouchSensor senseSept;
-    private TouchSensor senseHuit;
 
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -46,43 +42,56 @@ public class Clutch {
     // ---------------------------------------------------------------------------------- //
     // Reset/Start  & current positions for clutch boxes 1 through 8 | mm away from the touch sensor //
     // ---------------------------------------------------------------------------------- //
-    int startUn = 1;
-    int startDeux = 2;
-    int startTrois = 3;
-    int startQuatre = 4;
-    int startCinq = 5;
-    int startSix = 6;
-    int startSept = 7;
-    int startHuit = 8;
 
-    int currUn = 1;
-    int currDeux = 2;
-    int currTrois = 3;
-    int currQuatre = 4;
-    int currCinq = 5;
-    int currSix = 6;
-    int currSept = 7;
-    int currHuit = 8;
+    // Position for starting / initializing
+    int startUn = 50;
+    int startDeux = 50;
+    int startTrois = 50;
+    int startQuatre = 50;
+    int startCinq = 50;
+    int startSix = 50;
+
+    int[] starts = {startUn, startDeux, startTrois, startQuatre, startCinq, startSix};
+
+    // positions for stacking 3rd height
+    int thirdUn = 1;
+    int thirdDeux = 2;
+    int thirdTrois = 3;
+    int thirdQuatre = 4;
+    int thirdCinq = 5;
+    int thirdSix = 6;
+
+    int[] heightThree = {thirdUn, thirdDeux, thirdTrois, thirdQuatre, thirdCinq, thirdSix};
+
+
+
+    int currUn;
+    int currDeux;
+    int currTrois;
+    int currQuatre;
+    int currCinq;
+    int currSix;
+
 
 
     // --------------------------------------------------------------------- //
     // converted to be in array format for easier usage in the methods below //
     // --------------------------------------------------------------------- //
-    private Servo[] clutch = {clutchUn, clutchDeux, clutchTrois, clutchQuatre, clutchCinq, clutchSix, clutchSept, clutchHuit};
-    private Servo[] topRow = {clutchTrois, clutchQuatre, clutchSept, clutchHuit};
-    private Servo[] bottomRow = {clutchUn, clutchDeux, clutchCinq, clutchSix};
+    private Servo[] clutch = {clutchUn, clutchDeux, clutchTrois, clutchQuatre, clutchCinq, clutchSix};
+    private Servo[] topRow = {clutchUn, clutchDeux, clutchTrois};
+    private Servo[] bottomRow = {clutchQuatre, clutchCinq, clutchSix};
 
-    private TouchSensor[] touch = {senseUn, senseDeux, senseTrois, senseQuatre, senseCinq, senseSix, senseSept, senseHuit};
+    private TouchSensor[] touch = {senseUn, senseDeux, senseTrois, senseQuatre, senseCinq, senseSix};
 
     private DcMotor [] sect = {topSect, bottomSect};
 
-    private int reset[] = {startUn, startDeux, startTrois, startQuatre, startCinq, startSix, startSept, startHuit};
-    private int startTop[] = {startTrois, startQuatre, startSept, startHuit};
-    private int startBottom[] = {startUn, startDeux, startCinq, startSix};
+    private int reset[] = {startUn, startDeux, startTrois, startQuatre, startCinq, startSix};
+    private int startTop[] = {startUn, startDeux, startTrois};
+    private int startBottom[] = {startQuatre, startCinq, startSix};
 
-    private int curr[] = {currUn, currDeux, currTrois, currQuatre, currCinq, currSix, currSept, currHuit};
-    private int topCurr[] = {currTrois, currQuatre, currSept, currHuit};
-    private int bottomCurr[] = {currUn, currDeux, currCinq, currSix};
+    private int curr[] = {currUn, currDeux, currTrois, currQuatre, currCinq, currSix};
+    private int topCurr[] = {currUn, currDeux, currTrois};
+    private int bottomCurr[] = {currQuatre, currCinq, currSix};
 
 
     // ----------------------------------------------------------------------------------- //
@@ -111,8 +120,6 @@ public class Clutch {
         clutchQuatre = hardwareMap.servo.get("Clutch4");
         clutchCinq = hardwareMap.servo.get("Clutch5");
         clutchSix = hardwareMap.servo.get("Clutch6");
-        clutchSept = hardwareMap.servo.get("Clutch7");
-        clutchHuit = hardwareMap.servo.get("Clutch8");
 
         topSect = hardwareMap.dcMotor.get("LeftSect");
         bottomSect = hardwareMap.dcMotor.get("RightSect");
@@ -123,8 +130,6 @@ public class Clutch {
         senseQuatre = hardwareMap.touchSensor.get("Sense4");
         senseCinq = hardwareMap.touchSensor.get("Sense5");
         senseSix = hardwareMap.touchSensor.get("Sense6");
-        senseSept = hardwareMap.touchSensor.get("Sense7");
-        senseHuit = hardwareMap.touchSensor.get("Sense8");
 
         // ************ INIT STATE ************ //
         servoSetting(NEUTRAL);
@@ -221,6 +226,22 @@ public class Clutch {
             halt();
             servoSetting(NEUTRAL);
         }
+
+
+
+        // -------------------------------------------- //
+        // Moving to the desired target location method //
+        // -------------------------------------------- //
+
+    public void moveToPosition (int change1 , int change2, int change3, int change4, int change5, int change6){
+
+
+
+
+
+
+
+    }
 
 
 

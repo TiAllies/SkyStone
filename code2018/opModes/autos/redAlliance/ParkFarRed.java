@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos.redAlliance;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccauto;
 
 @Autonomous(name = "Red: P(far)", group = "Autonomous")
+@Disabled
 public class ParkFarRed extends LinearOpMode {
     Meccauto meccauto;
 

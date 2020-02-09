@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Clutch;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Craw;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Mandible;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccanum;
+import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.stackClutch;
 
 
 @TeleOp (name = "manualOverride" , group = "TeleOp")
@@ -19,9 +20,12 @@ public class manualOverride extends OpMode{
 //   Arm arm;
    Mandible mandible;
 //   Clutch clutch;
+//    stackClutch stackClutch;
 
     double thing = 0;
+    double thing2 = 0;
     boolean check = false;
+    boolean scale = false;
 
 
 
@@ -32,6 +36,7 @@ public class manualOverride extends OpMode{
 //        arm = new Arm(hardwareMap);
 //        clutch = new Clutch(hardwareMap);
         mandible = new Mandible(hardwareMap);
+//        stackClutch = new stackClutch(hardwareMap , telemetry);
 
     }
 
@@ -40,12 +45,23 @@ public class manualOverride extends OpMode{
 
         telemetry.addData("right joystick X: ", gamepad1.right_stick_x);
         telemetry.addData("Jaw Height", thing);
+        telemetry.addData("Servo Position", thing2);
 
         // -------------------------- //
         // Drivetrain code for moving //
         // -------------------------- //
-        meccanum.drive(-gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
 
+        if(!scale) {
+            meccanum.drive(-gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
+        }
+
+        if (scale){
+            meccanum.drive(-gamepad1.left_stick_x/2, -gamepad1.left_stick_y/2, gamepad1.right_stick_x/2);
+        }
+
+        if (gamepad1.x){
+            scale = true;
+        }
         // ------------------------- //
         // Grabber on the end of arm //
         // ------------------------- //
@@ -55,6 +71,20 @@ public class manualOverride extends OpMode{
             craw.release(gamepad2.left_trigger);
         } else { craw.halt(); }*/
 
+/*        if (gamepad2.dpad_down && !check){
+            thing2 -= 0.05;
+            check = true;
+        }
+        if (gamepad2.dpad_up && !check){
+            thing2 += 0.05;
+            check = true;
+        }
+        if (!gamepad2.dpad_down && !gamepad2.dpad_up){
+            check = false;
+        }
+        if (check) {
+            stackClutch.testPos(thing2);
+        }*/
 
 
 
@@ -93,10 +123,12 @@ public class manualOverride extends OpMode{
 
         if (gamepad1.right_bumper){
             mandible.bite();
+            scale = false;
         }
 
         if (gamepad1.right_trigger > 0.2){
             mandible.biteMore();
+            scale = false;
         }
 
 

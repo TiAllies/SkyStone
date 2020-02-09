@@ -85,7 +85,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  */
 
 
-@Autonomous(name="Scanner: Red|Vertical", group ="Autonomous")
+@Autonomous(name="Stones: Red 1-Vert", group ="Autonomous")
 public class RedDetectedPulled extends LinearOpMode {
 
     //subs
@@ -268,7 +268,7 @@ public class RedDetectedPulled extends LinearOpMode {
                 } else if ((translation.get(1)/mmPerInch) < 6 && (translation.get(1)/mmPerInch) > -2){
                     telemetry.addData("Stone", 2);
                     // stone position 2 (middle, still a bit to the right of robot)
-                    meccauto.side(Meccauto.RIGHT, 13, 1);
+                    meccauto.side(Meccauto.RIGHT, 16, 1);
                     meccauto.turn(Meccauto.RIGHT, 2, 1);
                     sleep(2000);
                     mandible.stoneLevel();
@@ -299,7 +299,7 @@ public class RedDetectedPulled extends LinearOpMode {
                 } else if ((translation.get(1)/mmPerInch) <= -2){
                     telemetry.addData("Stone", 1);
                     // stone position 1 (left of robot)
-                    meccauto.side(Meccauto.RIGHT, 26, 1);
+                    meccauto.side(Meccauto.RIGHT, 25, 1);
                     meccauto.turn(Meccauto.RIGHT, 4, 1);
                     sleep(2000);
                     mandible.stoneLevel();
@@ -318,7 +318,7 @@ public class RedDetectedPulled extends LinearOpMode {
                     meccauto.turn(Meccauto.RIGHT, 8, 1);
                     sleep(100);
                     meccauto.side(Meccauto.LEFT, 6, 1);
-                    meccauto.move(Meccauto.FORWARDS, 6, 1);
+                    meccauto.move(Meccauto.FORWARDS, 8, 1);
                     mandible.letGo();
                     sleep(300);
                     meccauto.move(Meccauto.BACKWARDS, 15, 1);
@@ -331,6 +331,37 @@ public class RedDetectedPulled extends LinearOpMode {
                 }
 
             }
+            if (getRuntime() == 14){
+                telemetry.addData("Stone", 3);
+                // stone position 3 (left of robot)
+                meccauto.side(Meccauto.LEFT, 3, 1);
+                sleep(2000);
+                mandible.stoneLevel();
+                mandible.openWide();
+                sleep(1000);
+                meccauto.move(Meccauto.FORWARDS, 12, .5);
+                mandible.biteMore();
+                sleep(300);
+                meccauto.move(Meccauto.BACKWARDS, 6, 1);
+                sleep(100);
+                meccauto.turn(Meccauto.RIGHT, 30, 1);
+                sleep(2000);
+                mandible.foundLevel();
+                meccauto.move(Meccauto.FORWARDS, 35, 1);
+                meccauto.turn(Meccauto.RIGHT, 3, 1);
+                meccauto.move(Meccauto.FORWARDS, 20, 1);
+                meccauto.turn(Meccauto.RIGHT, 5, 1);
+                sleep(100);
+                meccauto.side(Meccauto.LEFT, 5, 1);
+                meccauto.move(Meccauto.FORWARDS, 11, 1);
+                mandible.letGo();
+                sleep(300);
+                meccauto.move(Meccauto.BACKWARDS, 15, 1);
+                meccauto.side(Meccauto.RIGHT, 5, 1);
+                meccauto.move(Meccauto.BACKWARDS, 12, 1);
+                sleep(500000);
+            }
+
 
             telemetry.update();
         }

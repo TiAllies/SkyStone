@@ -86,7 +86,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  */
 
 
-@Autonomous(name="Scanner: Blue|vertical", group ="Autonomous")
+@Autonomous(name="Stones: Blue 1-Vert", group ="Autonomous")
 public class BlueDetectedPulled extends LinearOpMode {
 
     //subs
@@ -200,8 +200,9 @@ public class BlueDetectedPulled extends LinearOpMode {
          waitForStart();
         meccauto.move(Meccauto.FORWARDS, 22, .8);
         meccauto.turn(Meccauto.RIGHT, 5, 1);
-        meccauto.move(Meccauto.FORWARDS, 1, 1);
+        meccauto.move(Meccauto.FORWARDS, 3, 1);
 
+        sleep(3000);
 
         targetsSkyStone.activate();
         while (opModeIsActive()) {
@@ -359,6 +360,8 @@ public class BlueDetectedPulled extends LinearOpMode {
                     mandible.letGo();
                     sleep(50);
                     meccauto.move(Meccauto.BACKWARDS, 35, 1);
+
+
 /*                    sleep(1000);
 
 // back 95in
@@ -393,6 +396,32 @@ public class BlueDetectedPulled extends LinearOpMode {
                     sleep(500000);*/
                 }
 
+            }
+            if (getRuntime() == 14){
+                telemetry.addData("Stone", 2);
+                // stone position 2 (middle, still a bit to the right of robot)
+                meccauto.side(Meccauto.RIGHT, 9, .7);
+                mandible.stoneLevel();
+                sleep(200);
+                meccauto.move(Meccauto.FORWARDS, 13, .5);
+                mandible.biteMore();
+                sleep(200);
+                meccauto.move(Meccauto.BACKWARDS, 10, 1);
+                sleep(100);
+                meccauto.turn(Meccauto.LEFT, 27, 1);
+                mandible.foundLevel();
+                sleep(100);
+                meccauto.move(Meccauto.FORWARDS, 70, 1);
+                meccauto.turn(Meccauto.RIGHT, 4, 1);
+                meccauto.move(Meccauto.FORWARDS, 5, 1);
+                sleep(50);
+                mandible.letGo();
+                sleep(100);
+                meccauto.move(Meccauto.BACKWARDS, 15, 1);
+                sleep(50);
+                meccauto.side(Meccauto.RIGHT, 5, 1);
+                meccauto.move(Meccauto.BACKWARDS, 15, 1);
+                sleep(500000);
             }
 
             telemetry.update();

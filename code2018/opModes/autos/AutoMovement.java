@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Ta10272.code2018.opModes.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Claw;
@@ -11,6 +12,7 @@ import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccanum;
 import org.firstinspires.ftc.teamcode.Ta10272.code2018.subSystem.Meccauto;
 
 @Autonomous (name = "movementTest", group = "Autonomous")
+@Disabled
 public class AutoMovement extends LinearOpMode {
 
     Meccauto meccauto;

@@ -41,15 +41,16 @@ public class FoundRed extends LinearOpMode {
         meccauto.move(Meccauto.BACKWARDS, 52, 1);
         mandible.up();
         sleep(100);
-        meccauto.turn(Meccauto.LEFT, 3, 1);
+        meccauto.turn(Meccauto.RIGHT, 3, 1);
         sleep(50);
         meccauto.side(Meccauto.RIGHT, 30, .5);
         sleep(50);
-        meccauto.turn(Meccauto.RIGHT, 6, 1);
+        meccauto.turn(Meccauto.RIGHT, 4, 1);
         sleep(50);
         meccauto.side(Meccauto.RIGHT, 40, .5);
         sleep(50);
         meccauto.turn(Meccauto.RIGHT, 4, 1);
+        meccauto.move(Meccauto.BACKWARDS, 5, 1);
         sleep(50000);
 
     }
